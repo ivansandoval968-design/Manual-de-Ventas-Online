@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manual Comercial - Productos Arquitectónicos</title>
+    <title>Manual de Ventas - Productos Arquitectónicos</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -11,22 +11,13 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
                     colors: {
-                        brand: {
-                            50: '#f9fafb',
-                            100: '#f3f4f6',
-                            200: '#e5e7eb',
-                            300: '#d1d5db',
-                            400: '#9ca3af',
-                            500: '#6b7280',
-                            600: '#4b5563',
-                            700: '#374151',
-                            800: '#1f2937',
-                            900: '#111827',
-                            950: '#030712',
+                        gray: {
+                            50: '#fafafa', 100: '#f4f4f5', 200: '#e4e4e7',
+                            300: '#d4d4d8', 400: '#a1a1aa', 500: '#71717a',
+                            600: '#52525b', 700: '#3f3f46', 800: '#27272a',
+                            900: '#18181b', 950: '#09090b',
                         }
                     }
                 }
@@ -34,133 +25,121 @@
         }
     </script>
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f9fafb; color: #111827; }
+        body { font-family: 'Inter', sans-serif; background-color: #fafafa; color: #18181b; }
         .tab-content { display: none; animation: fadeIn 0.4s ease-in-out; }
         .tab-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
-        /* Custom scrollbar for an elegant look */
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar { width: 5px; height: 5px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+        ::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a1a1aa; }
         
-        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
-        .accordion-content.open { max-height: 800px; }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+        .accordion-content.open { max-height: 1000px; }
         
-        .nav-btn.active { background-color: #f3f4f6; color: #111827; font-weight: 600; border-left-color: #111827; }
-        .nav-btn-mobile.active { background-color: #111827; color: white; font-weight: 600; }
+        .nav-btn.active { background-color: #f4f4f5; color: #18181b; font-weight: 600; border-left-color: #18181b; }
+        .nav-btn-mobile.active { background-color: #18181b; color: white; font-weight: 600; }
         
-        /* Chat Loader */
-        .typing-indicator span { display: inline-block; width: 6px; height: 6px; background-color: #9ca3af; border-radius: 50%; margin: 0 2px; animation: bounce 1.4s infinite ease-in-out both; }
+        .typing-indicator span { display: inline-block; width: 5px; height: 5px; background-color: #a1a1aa; border-radius: 50%; margin: 0 2px; animation: bounce 1.4s infinite ease-in-out both; }
         .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
         .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
         @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
     </style>
 </head>
-<body class="flex h-screen overflow-hidden antialiased">
+<body class="flex h-screen overflow-hidden antialiased selection:bg-gray-200">
 
     <!-- Sidebar (Desktop) -->
     <aside class="hidden md:flex flex-col w-72 bg-white border-r border-gray-200 shrink-0 shadow-sm z-20 relative">
         <div class="p-8 border-b border-gray-100">
-            <h1 class="text-gray-900 text-xl font-bold tracking-[0.1em] uppercase leading-tight">
-                Productos<br/><span class="font-light text-gray-500">Arquitectónicos</span>
+            <h1 class="text-gray-900 text-lg font-bold tracking-[0.15em] uppercase leading-tight">
+                Productos<br/><span class="font-light text-gray-400">Arquitectónicos</span>
             </h1>
-            <div class="mt-4 inline-block bg-gray-100 text-gray-600 text-[10px] tracking-widest px-2 py-1 rounded-sm font-medium uppercase">
+            <div class="mt-4 inline-block bg-gray-100 text-gray-500 text-[9px] tracking-[0.2em] px-2 py-1.5 rounded-sm font-semibold uppercase">
                 Manual de Ventas
             </div>
         </div>
         
         <nav class="flex-1 py-6 space-y-1 overflow-y-auto" id="nav-desktop">
-            <button onclick="switchTab('perfiles')" class="nav-btn w-full flex items-center gap-3 px-8 py-3 text-sm transition-all duration-200 text-gray-500 hover:text-gray-900 hover:bg-gray-50 border-l-4 border-transparent active" data-target="perfiles">
-                <i class="fa-solid fa-users w-5 text-center"></i> Perfiles y Tono
+            <button onclick="switchTab('perfiles')" class="nav-btn w-full flex items-center gap-4 px-8 py-3.5 text-sm transition-all duration-200 text-gray-500 hover:text-gray-900 hover:bg-gray-50 border-l-4 border-transparent active" data-target="perfiles">
+                <i class="fa-solid fa-users w-4 text-center"></i> Perfiles y Tono
             </button>
-            <button onclick="switchTab('protocolos')" class="nav-btn w-full flex items-center gap-3 px-8 py-3 text-sm transition-all duration-200 text-gray-500 hover:text-gray-900 hover:bg-gray-50 border-l-4 border-transparent" data-target="protocolos">
-                <i class="fa-regular fa-comments w-5 text-center"></i> Protocolos por Canal
+            <button onclick="switchTab('protocolos')" class="nav-btn w-full flex items-center gap-4 px-8 py-3.5 text-sm transition-all duration-200 text-gray-500 hover:text-gray-900 hover:bg-gray-50 border-l-4 border-transparent" data-target="protocolos">
+                <i class="fa-regular fa-comment-dots w-4 text-center"></i> Protocolos
             </button>
-            <button onclick="switchTab('arbol')" class="nav-btn w-full flex items-center gap-3 px-8 py-3 text-sm transition-all duration-200 text-gray-500 hover:text-gray-900 hover:bg-gray-50 border-l-4 border-transparent" data-target="arbol">
-                <i class="fa-solid fa-code-branch w-5 text-center"></i> Árbol de Decisión
+            <button onclick="switchTab('arbol')" class="nav-btn w-full flex items-center gap-4 px-8 py-3.5 text-sm transition-all duration-200 text-gray-500 hover:text-gray-900 hover:bg-gray-50 border-l-4 border-transparent" data-target="arbol">
+                <i class="fa-solid fa-sitemap w-4 text-center"></i> Árbol de Decisión
             </button>
-            <button onclick="switchTab('simulador')" class="nav-btn w-full flex items-center gap-3 px-8 py-3 text-sm transition-all duration-200 text-gray-500 hover:text-gray-900 hover:bg-gray-50 border-l-4 border-transparent" data-target="simulador">
-                <i class="fa-solid fa-robot w-5 text-center"></i> Simulador IA
+            <button onclick="switchTab('simulador')" class="nav-btn w-full flex items-center gap-4 px-8 py-3.5 text-sm transition-all duration-200 text-gray-500 hover:text-gray-900 hover:bg-gray-50 border-l-4 border-transparent" data-target="simulador">
+                <i class="fa-solid fa-mobile-screen w-4 text-center"></i> Simulador IA
             </button>
         </nav>
     </aside>
 
     <!-- Main Content -->
-    <main class="flex-1 flex flex-col min-w-0 bg-gray-50 relative">
+    <main class="flex-1 flex flex-col min-w-0 relative">
         
         <!-- Mobile Header & Nav -->
         <div class="md:hidden flex flex-col shrink-0 border-b border-gray-200 bg-white z-20 shadow-sm">
             <div class="p-4 flex items-center justify-center border-b border-gray-100">
-               <h1 class="text-gray-900 text-sm font-bold tracking-[0.1em] uppercase">Productos <span class="font-light text-gray-500">Arq.</span></h1>
+               <h1 class="text-gray-900 text-xs font-bold tracking-[0.15em] uppercase">Productos <span class="font-light text-gray-400">Arq.</span></h1>
             </div>
-            <div class="flex overflow-x-auto px-4 py-3 snap-x gap-2" id="nav-mobile">
-                <button onclick="switchTab('perfiles')" class="nav-btn-mobile snap-start shrink-0 flex items-center gap-2 px-4 py-2 rounded-full text-xs transition-colors bg-gray-100 text-gray-600 active" data-target="perfiles">Perfiles</button>
-                <button onclick="switchTab('protocolos')" class="nav-btn-mobile snap-start shrink-0 flex items-center gap-2 px-4 py-2 rounded-full text-xs transition-colors bg-gray-100 text-gray-600 border border-transparent" data-target="protocolos">Canales</button>
-                <button onclick="switchTab('arbol')" class="nav-btn-mobile snap-start shrink-0 flex items-center gap-2 px-4 py-2 rounded-full text-xs transition-colors bg-gray-100 text-gray-600 border border-transparent" data-target="arbol">Decisiones</button>
-                <button onclick="switchTab('simulador')" class="nav-btn-mobile snap-start shrink-0 flex items-center gap-2 px-4 py-2 rounded-full text-xs transition-colors bg-gray-100 text-gray-600 border border-transparent" data-target="simulador">Simulador IA</button>
+            <div class="flex overflow-x-auto px-4 py-3 snap-x gap-2 custom-scrollbar" id="nav-mobile">
+                <button onclick="switchTab('perfiles')" class="nav-btn-mobile snap-start shrink-0 flex items-center gap-2 px-5 py-2 rounded-full text-xs transition-colors bg-gray-100 text-gray-600 active" data-target="perfiles">Perfiles</button>
+                <button onclick="switchTab('protocolos')" class="nav-btn-mobile snap-start shrink-0 flex items-center gap-2 px-5 py-2 rounded-full text-xs transition-colors bg-gray-100 text-gray-600 border border-transparent" data-target="protocolos">Protocolos</button>
+                <button onclick="switchTab('arbol')" class="nav-btn-mobile snap-start shrink-0 flex items-center gap-2 px-5 py-2 rounded-full text-xs transition-colors bg-gray-100 text-gray-600 border border-transparent" data-target="arbol">Procesos</button>
+                <button onclick="switchTab('simulador')" class="nav-btn-mobile snap-start shrink-0 flex items-center gap-2 px-5 py-2 rounded-full text-xs transition-colors bg-gray-100 text-gray-600 border border-transparent" data-target="simulador">Simulador</button>
             </div>
         </div>
 
-        <div class="flex-1 overflow-y-auto p-6 md:p-10 lg:p-16 relative z-10">
+        <div class="flex-1 overflow-y-auto p-6 md:p-12 lg:p-16 relative z-10">
             <div class="max-w-4xl mx-auto h-full pb-20">
 
                 <!-- SECTION 1: PERFILES Y TONO -->
                 <section id="perfiles" class="tab-content active space-y-12">
-                    <div class="border-b border-gray-200 pb-6">
-                        <h2 class="text-3xl font-light text-gray-900 tracking-tight">Perfiles y Tono de Marca</h2>
-                        <p class="text-gray-500 mt-2 text-lg font-light">Estandarización de la comunicación consultiva y de lujo.</p>
+                    <div class="border-b border-gray-200 pb-8">
+                        <h2 class="text-3xl md:text-4xl font-light text-gray-900 tracking-tight">Perfiles & Tono</h2>
+                        <p class="text-gray-500 mt-3 text-lg font-light">Estandarización de la comunicación consultiva de lujo.</p>
                     </div>
 
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        <!-- B2B -->
-                        <div class="bg-white border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow">
-                            <div class="w-12 h-12 bg-gray-100 text-gray-800 rounded-lg flex items-center justify-center mb-6">
-                                <i class="fa-regular fa-building text-xl"></i>
-                            </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white border border-gray-200 rounded-xl p-8 shadow-sm">
                             <h3 class="text-xl font-semibold text-gray-900 mb-1">B2B (Profesional)</h3>
-                            <p class="text-gray-500 text-xs font-medium tracking-widest uppercase mb-6">Arquitectos, Constructoras</p>
+                            <p class="text-gray-400 text-xs font-semibold tracking-widest uppercase mb-6">Arquitectos / Constructoras</p>
                             <ul class="space-y-4 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-gray-900 mt-1"></i><span><strong>Perfil:</strong> Buscan un aliado estratégico, viabilidad técnica y eficiencia en tiempos.</span></li>
-                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-gray-900 mt-1"></i><span><strong>Acción:</strong> Envío rápido de fichas técnicas, catálogos BIM/CAD y renders para presentaciones.</span></li>
-                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-gray-900 mt-1"></i><span><strong>Marcas:</strong> Hansgrohe, Roca institucional, Porcelanatos Mirage de gran formato.</span></li>
+                                <li class="flex gap-3"><i class="fa-solid fa-arrow-right text-gray-300 mt-1"></i><span><strong>Mentalidad:</strong> Buscan un aliado estratégico. Valoran la eficiencia, la viabilidad técnica y las garantías.</span></li>
+                                <li class="flex gap-3"><i class="fa-solid fa-arrow-right text-gray-300 mt-1"></i><span><strong>Acción Comercial:</strong> Envío inmediato de fichas técnicas, librerías BIM/CAD y renders de especificación del producto.</span></li>
                             </ul>
                         </div>
-
-                        <!-- B2C -->
-                        <div class="bg-white border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow">
-                            <div class="w-12 h-12 bg-gray-900 text-white rounded-lg flex items-center justify-center mb-6">
-                                <i class="fa-regular fa-user text-xl"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-1">B2C (Cliente Final)</h3>
-                            <p class="text-gray-500 text-xs font-medium tracking-widest uppercase mb-6">Propietarios, Remodelaciones</p>
-                            <ul class="space-y-4 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-gray-900 mt-1"></i><span><strong>Perfil:</strong> Enfocados en diseño, estilo de vida y estatus. Compran un sueño arquitectónico.</span></li>
-                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-gray-900 mt-1"></i><span><strong>Acción:</strong> Venta consultiva. Guiar paso a paso y priorizar la invitación al showroom.</span></li>
-                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-gray-900 mt-1"></i><span><strong>Marcas:</strong> Poliform, Nolte, Axor, Gessi, Antoniolupi.</span></li>
+                        <div class="bg-gray-900 text-white rounded-xl p-8 shadow-sm">
+                            <h3 class="text-xl font-semibold text-white mb-1">B2C (Cliente Final)</h3>
+                            <p class="text-gray-400 text-xs font-semibold tracking-widest uppercase mb-6">Propietarios / Remodelaciones</p>
+                            <ul class="space-y-4 text-sm text-gray-300">
+                                <li class="flex gap-3"><i class="fa-solid fa-arrow-right text-gray-600 mt-1"></i><span><strong>Mentalidad:</strong> Buscan inspiración y estatus. Compran el "sueño" de un espacio de diseño premium (Ej: Cocinas Nolte).</span></li>
+                                <li class="flex gap-3"><i class="fa-solid fa-arrow-right text-gray-600 mt-1"></i><span><strong>Acción Comercial:</strong> Venta consultiva. El objetivo principal es enamorarlos e invitarlos al showroom físico.</span></li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="bg-gray-900 rounded-xl p-8 text-white shadow-md">
-                        <h3 class="text-xl font-semibold mb-4 flex items-center gap-3"><i class="fa-solid fa-gem text-gray-400"></i> El Tono de Lujo</h3>
-                        <p class="text-gray-300 text-sm mb-6 leading-relaxed font-light">Nuestra comunicación es <strong>elegante, experta y minimalista</strong>. Representamos a las mejores marcas europeas. No presionamos el cierre; educamos, inspiramos y resolvemos.</p>
+                    <div class="border border-gray-200 bg-white rounded-xl p-8 shadow-sm">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4 uppercase tracking-widest text-xs">Directrices de Tono</h3>
+                        <p class="text-gray-600 text-sm mb-8 leading-relaxed">Nuestra comunicación es <strong>sofisticada, consultiva, experta y concisa</strong>. Evitamos la insistencia. Educamos e inspiramos mediante la excelencia del diseño europeo.</p>
+                        
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
-                            <div>
-                                <strong class="text-white block mb-2 border-b border-gray-700 pb-1">El Estándar:</strong>
-                                <ul class="text-gray-400 space-y-2">
-                                    <li>• Trato de "Tú" respetuoso y profesional.</li>
-                                    <li>• Vocabulario de diseño ("formato", "textura", "vanguardia").</li>
-                                    <li>• Enfocarse en la longevidad y exclusividad.</li>
+                            <div class="border-l border-gray-200 pl-6">
+                                <strong class="text-gray-900 block mb-3 font-semibold">El Estándar PA</strong>
+                                <ul class="text-gray-600 space-y-3">
+                                    <li>Trato de "Tú" respetuoso y profesional.</li>
+                                    <li>Mensajes cortos, estilo WhatsApp.</li>
+                                    <li>Cerrar interacciones guiando el siguiente paso (Ej: "¿Te envío el catálogo o prefieres agendar cita?").</li>
                                 </ul>
                             </div>
-                            <div>
-                                <strong class="text-white block mb-2 border-b border-gray-700 pb-1">A Evitar:</strong>
-                                <ul class="text-gray-400 space-y-2">
-                                    <li>• Uso de diminutivos ("el pisito", "la mesita").</li>
-                                    <li>• Dar precios crudos sin asesoría ni contexto.</li>
-                                    <li>• Lenguaje de ventas agresivo o desesperado.</li>
+                            <div class="border-l border-gray-200 pl-6">
+                                <strong class="text-gray-900 block mb-3 font-semibold">Lo Inaceptable</strong>
+                                <ul class="text-gray-600 space-y-3">
+                                    <li>Párrafos extensos o catálogos sin contexto.</li>
+                                    <li>Entregar precios sin hablar de la propuesta de valor.</li>
+                                    <li>Uso de diminutivos o lenguaje promocional agresivo.</li>
                                 </ul>
                             </div>
                         </div>
@@ -168,50 +147,60 @@
                 </section>
 
                 <!-- SECTION 2: PROTOCOLOS POR CANAL -->
-                <section id="protocolos" class="tab-content space-y-8">
-                    <div class="border-b border-gray-200 pb-6">
-                        <h2 class="text-3xl font-light text-gray-900 tracking-tight">Protocolos por Canal</h2>
-                        <p class="text-gray-500 mt-2 text-lg font-light">Directrices operativas para plataformas digitales.</p>
+                <section id="protocolos" class="tab-content space-y-12">
+                    <div class="border-b border-gray-200 pb-8">
+                        <h2 class="text-3xl md:text-4xl font-light text-gray-900 tracking-tight">Protocolos Operativos</h2>
+                        <p class="text-gray-500 mt-3 text-lg font-light">Gestión por canal para maximizar la conversión.</p>
                     </div>
 
                     <div class="space-y-4">
-                        <div class="bg-white border border-gray-200 p-6 rounded-xl flex flex-col md:flex-row gap-6 items-start shadow-sm hover:border-gray-300 transition-colors">
-                            <div class="w-12 h-12 bg-gray-100 text-gray-900 rounded-lg flex items-center justify-center shrink-0">
-                                <i class="fa-brands fa-whatsapp text-2xl"></i>
+                        <div class="bg-white border border-gray-200 p-8 rounded-xl flex flex-col md:flex-row gap-8 shadow-sm">
+                            <div class="w-12 h-12 bg-gray-50 border border-gray-100 text-gray-800 rounded-full flex items-center justify-center shrink-0">
+                                <i class="fa-brands fa-whatsapp text-xl"></i>
                             </div>
                             <div>
-                                <h3 class="text-lg font-semibold text-gray-900 mb-2">WhatsApp (Canal Principal)</h3>
-                                <ul class="space-y-2 text-sm text-gray-600">
-                                    <li><strong>Respuesta Rápida:</strong> Cualificar al cliente (B2B vs B2C) en los primeros 2 intercambios.</li>
-                                    <li><strong>Enrutamiento de Catálogos:</strong> Si consultan griferías de manera general, enviar catálogos técnicos de <em>Hansgrohe</em> para proyectos de volumen/funcionalidad, o <em>Axor / Gessi</em> para proyectos residenciales de lujo extremo.</li>
-                                    <li><strong>Seguimiento:</strong> Utilizar renders de alta calidad de productos aplicados en ambientes para re-enganchar, en lugar de mensajes de texto planos.</li>
-                                </ul>
+                                <h3 class="text-lg font-semibold text-gray-900 mb-3">WhatsApp</h3>
+                                <div class="space-y-4 text-sm text-gray-600 leading-relaxed">
+                                    <p><strong>Reglas de Enrutamiento:</strong></p>
+                                    <ul class="list-disc pl-5 space-y-1">
+                                        <li>Cualificar en el primer contacto: "¿El proyecto es personal o eres profesional del sector?".</li>
+                                        <li>Si piden griferías/sanitarios para <strong>proyectos/volumen</strong>: Enrutar catálogo <em>Hansgrohe</em>.</li>
+                                        <li>Si buscan <strong>lujo residencial/diseño exclusivo</strong>: Enrutar catálogo <em>Axor</em> o <em>Gessi</em>.</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="bg-white border border-gray-200 p-6 rounded-xl flex flex-col md:flex-row gap-6 items-start shadow-sm hover:border-gray-300 transition-colors">
-                            <div class="w-12 h-12 bg-gray-100 text-gray-900 rounded-lg flex items-center justify-center shrink-0">
-                                <i class="fa-brands fa-instagram text-2xl"></i>
+                        <div class="bg-white border border-gray-200 p-8 rounded-xl flex flex-col md:flex-row gap-8 shadow-sm">
+                            <div class="w-12 h-12 bg-gray-50 border border-gray-100 text-gray-800 rounded-full flex items-center justify-center shrink-0">
+                                <i class="fa-brands fa-instagram text-xl"></i>
                             </div>
                             <div>
-                                <h3 class="text-lg font-semibold text-gray-900 mb-2">Redes Sociales (Meta Ads)</h3>
-                                <ul class="space-y-2 text-sm text-gray-600">
-                                    <li><strong>Atención Inmediata:</strong> Los leads de respuesta directa pierden interés rápido. SLA menor a 15 minutos.</li>
-                                    <li><strong>Manejo de Campañas:</strong> Leads provenientes de campañas masivas de sanitarios deben derivarse a líneas específicas como <em>Roca Ona</em> o <em>Infinity</em>. Para lanzamientos de <em>Poliform</em>, el objetivo no es vender por chat, sino agendar visita guiada.</li>
-                                </ul>
+                                <h3 class="text-lg font-semibold text-gray-900 mb-3">Pauta Digital (Meta Ads)</h3>
+                                <div class="space-y-4 text-sm text-gray-600 leading-relaxed">
+                                    <p><strong>Gestión de Campañas de Captación:</strong></p>
+                                    <ul class="list-disc pl-5 space-y-1">
+                                        <li>SLA de respuesta: Menor a 15 minutos.</li>
+                                        <li>Campañas masivas (Baños/Sanitarios): Derivar inmediatamente a líneas ancla como <em>Roca Ona</em> e <em>Infinity</em> para asegurar interés inicial.</li>
+                                        <li>Objetivo: Trasladar el lead a WhatsApp ofreciendo material técnico exclusivo.</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="bg-white border border-gray-200 p-6 rounded-xl flex flex-col md:flex-row gap-6 items-start shadow-sm hover:border-gray-300 transition-colors">
-                            <div class="w-12 h-12 bg-gray-100 text-gray-900 rounded-lg flex items-center justify-center shrink-0">
-                                <i class="fa-regular fa-envelope text-2xl"></i>
+                        <div class="bg-white border border-gray-200 p-8 rounded-xl flex flex-col md:flex-row gap-8 shadow-sm">
+                            <div class="w-12 h-12 bg-gray-50 border border-gray-100 text-gray-800 rounded-full flex items-center justify-center shrink-0">
+                                <i class="fa-regular fa-envelope text-xl"></i>
                             </div>
                             <div>
-                                <h3 class="text-lg font-semibold text-gray-900 mb-2">Correo Electrónico</h3>
-                                <ul class="space-y-2 text-sm text-gray-600">
-                                    <li><strong>Propuestas B2B:</strong> Uso exclusivo de plantillas formales. Adjuntar especificaciones técnicas consolidadas (fichas en PDF).</li>
-                                    <li><strong>Presentación a Firmas:</strong> Mantener correos minimalistas con enlaces a galerías de proyectos y Lookbooks web para no saturar bandejas de entrada.</li>
-                                </ul>
+                                <h3 class="text-lg font-semibold text-gray-900 mb-3">Correo Electrónico (B2B)</h3>
+                                <div class="space-y-4 text-sm text-gray-600 leading-relaxed">
+                                    <p><strong>Cotizaciones y Especificación:</strong></p>
+                                    <ul class="list-disc pl-5 space-y-1">
+                                        <li>Toda cotización formal debe ir acompañada de renders de presentación de los productos principales (lavamanos, griferías, mobiliario).</li>
+                                        <li>El correo B2B facilita la visualización del cliente final del arquitecto.</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -219,97 +208,101 @@
 
                 <!-- SECTION 3: ÁRBOL DE DECISIÓN -->
                 <section id="arbol" class="tab-content space-y-8">
-                    <div class="border-b border-gray-200 pb-6 flex justify-between items-end">
+                    <div class="border-b border-gray-200 pb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
                         <div>
-                            <h2 class="text-3xl font-light text-gray-900 tracking-tight">Árbol de Decisión y Procesos</h2>
-                            <p class="text-gray-500 mt-2 text-lg font-light">Estructura de respuesta adaptativa.</p>
+                            <h2 class="text-3xl md:text-4xl font-light text-gray-900 tracking-tight">Árbol de Decisión</h2>
+                            <p class="text-gray-500 mt-3 text-lg font-light">Estructura detallada de objeciones y cierres.</p>
                         </div>
-                        <button onclick="resetTree()" class="hidden md:block text-gray-500 hover:text-gray-900 border border-gray-300 px-4 py-2 rounded-lg text-sm bg-white shadow-sm transition-colors">
-                            Reiniciar
+                        <button onclick="resetTree()" class="text-gray-500 hover:text-gray-900 border border-gray-300 px-4 py-2.5 rounded-lg text-sm bg-white shadow-sm font-medium transition-colors">
+                            <i class="fa-solid fa-rotate-left mr-2"></i>Reiniciar
                         </button>
                     </div>
 
                     <!-- Step 1: Origen -->
-                    <div class="bg-white border border-gray-200 p-6 rounded-xl shadow-sm">
-                        <h3 class="text-gray-900 font-semibold mb-4 flex items-center gap-2">
-                            <span class="bg-gray-900 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">1</span> Origen del Lead
+                    <div class="bg-white border border-gray-200 p-8 rounded-xl shadow-sm">
+                        <h3 class="text-gray-900 font-semibold mb-6 flex items-center gap-3">
+                            <span class="bg-gray-100 text-gray-800 border border-gray-200 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span> Origen del Contacto
                         </h3>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <button onclick="selectOrigin('pauta', this)" class="btn-origin p-4 rounded-lg border border-gray-200 bg-gray-50 text-left hover:border-gray-400 transition-colors">
-                                <div class="font-semibold text-gray-900 mb-1">Pauta Digital (Ads)</div>
-                                <div class="text-xs text-gray-500">Alta intención, requiere rapidez.</div>
+                            <button onclick="selectOrigin('pauta', this)" class="btn-origin p-5 rounded-lg border border-gray-200 bg-gray-50 text-left hover:border-gray-900 transition-colors">
+                                <div class="font-semibold text-gray-900">Pauta Digital</div>
+                                <div class="text-xs text-gray-500 mt-1">Buscan producto específico.</div>
                             </button>
-                            <button onclick="selectOrigin('organico', this)" class="btn-origin p-4 rounded-lg border border-gray-200 bg-gray-50 text-left hover:border-gray-400 transition-colors">
-                                <div class="font-semibold text-gray-900 mb-1">Orgánico / Web</div>
-                                <div class="text-xs text-gray-500">Exploración e inspiración.</div>
+                            <button onclick="selectOrigin('organico', this)" class="btn-origin p-5 rounded-lg border border-gray-200 bg-gray-50 text-left hover:border-gray-900 transition-colors">
+                                <div class="font-semibold text-gray-900">Orgánico</div>
+                                <div class="text-xs text-gray-500 mt-1">Explorando marcas/diseño.</div>
                             </button>
-                            <button onclick="selectOrigin('actual', this)" class="btn-origin p-4 rounded-lg border border-gray-200 bg-gray-50 text-left hover:border-gray-400 transition-colors">
-                                <div class="font-semibold text-gray-900 mb-1">Cliente Actual (CRM)</div>
-                                <div class="text-xs text-gray-500">Relación existente, post-venta.</div>
+                            <button onclick="selectOrigin('actual', this)" class="btn-origin p-5 rounded-lg border border-gray-200 bg-gray-50 text-left hover:border-gray-900 transition-colors">
+                                <div class="font-semibold text-gray-900">Cliente Actual</div>
+                                <div class="text-xs text-gray-500 mt-1">Buscan servicio VIP y rapidez.</div>
                             </button>
                         </div>
                     </div>
 
                     <!-- Step 2: Tipo -->
-                    <div id="step-tipo" class="bg-white border border-gray-200 p-6 rounded-xl shadow-sm hidden">
-                        <h3 class="text-gray-900 font-semibold mb-4 flex items-center gap-2">
-                            <span class="bg-gray-900 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">2</span> Tipo de Cliente
+                    <div id="step-tipo" class="bg-white border border-gray-200 p-8 rounded-xl shadow-sm hidden">
+                        <h3 class="text-gray-900 font-semibold mb-6 flex items-center gap-3">
+                            <span class="bg-gray-100 text-gray-800 border border-gray-200 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span> Tipo de Cliente
                         </h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <button onclick="selectType('b2b', this)" class="btn-type p-4 rounded-lg border border-gray-200 bg-gray-50 text-left hover:border-gray-400 transition-colors">
-                                <div class="font-semibold text-gray-900 mb-1"><i class="fa-regular fa-building mr-2 text-gray-500"></i>B2B (Arquitecto/Constructor)</div>
-                                <div class="text-xs text-gray-500">Fichas técnicas, catálogos, cotización.</div>
+                            <button onclick="selectType('b2b', this)" class="btn-type p-5 rounded-lg border border-gray-200 bg-gray-50 text-left hover:border-gray-900 transition-colors">
+                                <div class="font-semibold text-gray-900">B2B (Arquitectos / Obra)</div>
                             </button>
-                            <button onclick="selectType('b2c', this)" class="btn-type p-4 rounded-lg border border-gray-200 bg-gray-50 text-left hover:border-gray-400 transition-colors">
-                                <div class="font-semibold text-gray-900 mb-1"><i class="fa-regular fa-user mr-2 text-gray-500"></i>B2C (Cliente Final)</div>
-                                <div class="text-xs text-gray-500">Asesoría de diseño, visita a showroom.</div>
+                            <button onclick="selectType('b2c', this)" class="btn-type p-5 rounded-lg border border-gray-200 bg-gray-50 text-left hover:border-gray-900 transition-colors">
+                                <div class="font-semibold text-gray-900">B2C (Cliente Final)</div>
                             </button>
                         </div>
                     </div>
 
                     <!-- Step 3: Resultados -->
                     <div id="step-resultados" class="bg-white border border-gray-200 rounded-xl hidden overflow-hidden shadow-sm">
-                        <div class="bg-gray-50 border-b border-gray-200 p-4">
-                            <h4 class="text-gray-700 font-semibold text-sm uppercase tracking-widest text-center">Protocolo de Acción Detallado</h4>
+                        <div class="bg-gray-50 border-b border-gray-200 p-5 text-center">
+                            <h4 class="text-gray-900 font-bold text-xs uppercase tracking-[0.2em]">Contexto & Protocolo Sugerido</h4>
                         </div>
-                        <div id="accordion-container" class="divide-y divide-gray-100">
-                            <!-- Inyectado por JS -->
-                        </div>
+                        <div id="accordion-container" class="divide-y divide-gray-100"></div>
                     </div>
                 </section>
 
                 <!-- SECTION 4: SIMULADOR IA -->
                 <section id="simulador" class="tab-content h-[75vh] flex flex-col">
-                    <div class="border-b border-gray-200 pb-4 shrink-0">
-                        <h2 class="text-3xl font-light text-gray-900 tracking-tight">Simulador de Interacciones</h2>
-                        <p class="text-gray-500 mt-2 text-sm font-light">Escribe como si fueras un cliente. La IA aplicará los lineamientos de Productos Arquitectónicos para responderte.</p>
+                    <div class="border-b border-gray-200 pb-6 flex flex-col md:flex-row justify-between items-start md:items-end gap-4 shrink-0">
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-light text-gray-900 tracking-tight">Simulador de Chat</h2>
+                            <p class="text-gray-500 mt-2 text-sm font-light">Practica respuestas rápidas de WhatsApp usando el tono de la marca.</p>
+                        </div>
+                        <button onclick="resetChat()" class="text-gray-500 hover:text-gray-900 border border-gray-300 px-4 py-2.5 rounded-lg text-sm bg-white shadow-sm font-medium transition-colors">
+                            <i class="fa-solid fa-broom mr-2"></i>Limpiar
+                        </button>
                     </div>
 
                     <div class="flex-1 min-h-0 bg-white border border-gray-200 rounded-xl mt-6 flex flex-col overflow-hidden shadow-sm">
-                        <div class="bg-gray-50 border-b border-gray-200 p-4 flex items-center gap-3 shrink-0">
-                            <div class="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center relative shadow-inner">
-                                <i class="fa-solid fa-robot text-white"></i>
-                                <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-white rounded-full"></span>
+                        <div class="bg-gray-50 border-b border-gray-200 p-4 shrink-0 flex flex-col gap-3">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 bg-white border border-gray-200 rounded-full flex items-center justify-center relative shadow-sm">
+                                    <i class="fa-solid fa-mobile-screen text-gray-700"></i>
+                                    <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-gray-900 border-2 border-white rounded-full"></span>
+                                </div>
+                                <div>
+                                    <h4 class="text-gray-900 font-semibold leading-tight text-sm">Asesor PA (IA)</h4>
+                                    <p class="text-gray-500 text-xs">Modo WhatsApp (Respuestas cortas)</p>
+                                </div>
                             </div>
-                            <div>
-                                <h4 class="text-gray-900 font-semibold leading-tight text-sm">Asesor de Lujo (IA)</h4>
-                                <p class="text-gray-500 text-xs">Productos Arquitectónicos</p>
-                            </div>
-                            <button onclick="resetChat()" class="ml-auto text-xs text-gray-500 hover:text-gray-900 border border-gray-300 px-3 py-1 rounded bg-white">Limpiar Chat</button>
+                            <input type="password" id="api-key-input" placeholder="Gemini API Key (Para uso externo / Vercel)" class="w-full bg-white border border-gray-200 px-3 py-2 text-xs rounded text-gray-600 focus:outline-none focus:border-gray-400">
                         </div>
 
-                        <div id="chat-window" class="flex-1 overflow-y-auto p-6 space-y-5 bg-white custom-scrollbar">
-                            <!-- Mensaje Inicial -->
+                        <div id="chat-window" class="flex-1 overflow-y-auto p-6 space-y-6 bg-gray-50/50 custom-scrollbar">
                             <div class="flex justify-start">
-                                <div class="max-w-[80%] rounded-2xl rounded-tl-sm p-4 text-sm leading-relaxed bg-gray-100 text-gray-800 border border-gray-200">
-                                    ¡Hola! Soy tu asesor virtual. Pon a prueba mis habilidades simulando una objeción de precio, preguntando por tiempos de entrega de Poliform o Nolte, solicitando griferías Axor, o simulando que dejaste de responderme.
+                                <div class="max-w-[85%] md:max-w-[70%] rounded-2xl rounded-tl-sm p-4 text-sm leading-relaxed bg-white text-gray-800 border border-gray-200 shadow-sm">
+                                    ¡Hola! Soy el simulador. Escríbeme objeciones reales de clientes (ej. "Tardan mucho", "Poliform es muy caro", "Quiero un lavamanos") y te mostraré cómo respondería un asesor ideal por WhatsApp.
                                 </div>
                             </div>
                         </div>
 
-                        <form id="chat-form" onsubmit="handleChatSubmit(event)" class="bg-gray-50 p-4 border-t border-gray-200 flex gap-3 shrink-0">
-                            <input type="text" id="chat-input" autocomplete="off" placeholder="Simula ser un cliente aquí..." class="flex-1 bg-white border border-gray-300 text-gray-900 text-sm rounded-lg p-3 focus:outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-shadow">
-                            <button type="submit" id="chat-submit" class="bg-gray-900 text-white px-6 rounded-lg font-medium hover:bg-black transition-colors disabled:opacity-50">Enviar</button>
+                        <form id="chat-form" onsubmit="handleChatSubmit(event)" class="bg-white p-4 border-t border-gray-200 flex gap-3 shrink-0 items-center">
+                            <input type="text" id="chat-input" autocomplete="off" placeholder="Escribe tu mensaje como cliente..." class="flex-1 bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-full px-5 py-3.5 focus:outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-shadow">
+                            <button type="submit" id="chat-submit" class="w-12 h-12 bg-gray-900 text-white rounded-full flex items-center justify-center hover:bg-black transition-colors disabled:opacity-50 shrink-0">
+                                <i class="fa-solid fa-paper-plane text-sm transform -translate-x-0.5"></i>
+                            </button>
                         </form>
                     </div>
                 </section>
@@ -318,7 +311,7 @@
     </main>
 
     <script>
-        // --- NAVEGACIÓN ---
+        // --- NAVIGATION LOGIC ---
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
@@ -335,27 +328,27 @@
 
             document.querySelectorAll('#nav-mobile .nav-btn-mobile').forEach(btn => {
                 if(btn.dataset.target === tabId) {
-                    btn.classList.add('bg-gray-900', 'text-white', 'font-medium');
+                    btn.classList.add('bg-gray-900', 'text-white');
                     btn.classList.remove('bg-gray-100', 'text-gray-600');
                 } else {
-                    btn.classList.remove('bg-gray-900', 'text-white', 'font-medium');
+                    btn.classList.remove('bg-gray-900', 'text-white');
                     btn.classList.add('bg-gray-100', 'text-gray-600');
                 }
             });
         }
 
-        // --- ÁRBOL DE DECISIÓN ---
+        // --- DECISION TREE LOGIC WITH CONTEXT ---
         let originState = null;
         let typeState = null;
 
         function selectOrigin(origin, btn) {
             originState = origin;
             document.querySelectorAll('.btn-origin').forEach(b => {
-                b.classList.remove('border-gray-900', 'bg-gray-100');
-                b.classList.add('border-gray-200', 'bg-gray-50');
+                b.classList.remove('border-gray-900', 'shadow-sm');
+                b.classList.add('border-gray-200');
             });
-            btn.classList.add('border-gray-900', 'bg-gray-100');
-            btn.classList.remove('border-gray-200', 'bg-gray-50');
+            btn.classList.add('border-gray-900', 'shadow-sm');
+            btn.classList.remove('border-gray-200');
             
             document.getElementById('step-tipo').classList.remove('hidden');
             if(typeState) renderTreeContent();
@@ -364,11 +357,11 @@
         function selectType(type, btn) {
             typeState = type;
             document.querySelectorAll('.btn-type').forEach(b => {
-                b.classList.remove('border-gray-900', 'bg-gray-100');
-                b.classList.add('border-gray-200', 'bg-gray-50');
+                b.classList.remove('border-gray-900', 'shadow-sm');
+                b.classList.add('border-gray-200');
             });
-            btn.classList.add('border-gray-900', 'bg-gray-100');
-            btn.classList.remove('border-gray-200', 'bg-gray-50');
+            btn.classList.add('border-gray-900', 'shadow-sm');
+            btn.classList.remove('border-gray-200');
             
             renderTreeContent();
         }
@@ -377,8 +370,8 @@
             originState = null;
             typeState = null;
             document.querySelectorAll('.btn-origin, .btn-type').forEach(b => {
-                b.classList.remove('border-gray-900', 'bg-gray-100');
-                b.classList.add('border-gray-200', 'bg-gray-50');
+                b.classList.remove('border-gray-900', 'shadow-sm');
+                b.classList.add('border-gray-200');
             });
             document.getElementById('step-tipo').classList.add('hidden');
             document.getElementById('step-resultados').classList.add('hidden');
@@ -398,54 +391,69 @@
             }
         }
 
+        function getTreeData(origin, type) {
+            const isB2B = type === 'b2b';
+            
+            return [
+                { 
+                    id: 'fase1', 
+                    title: '1. Interés Inicial y Perfilamiento', 
+                    context: isB2B ? "El arquitecto evalúa viabilidad. Necesita saber si podemos suplir su obra." : "El cliente final busca estética y status. Necesita validación visual.",
+                    action: isB2B ? "Enviar catálogos técnicos inmediatamente (Ej: Hansgrohe, Laufen). Preguntar metraje y cronograma de obra." : "Enviar fotos de proyectos reales y lookbooks de Poliform/Nolte. Invitar a vivir la experiencia en el showroom.",
+                    script: isB2B ? "Hola. Para alinearme con tu obra, ¿en qué fase se encuentran y qué volumen manejan? Te adjunto la ficha técnica de la línea." : "¡Hola! Qué gusto. Para asesorarte mejor con el diseño de tu espacio, ¿qué estilo estás buscando? Te comparto un poco de nuestra línea europea."
+                },
+                { 
+                    id: 'fase2', 
+                    title: '2. Objeción: Precio / Presupuesto', 
+                    context: isB2B ? "En obra, el precio impacta el margen. Hay que justificar el ROI." : "El cliente B2C puede asustarse con el ticket de lujo. Hay que educar sobre la inversión.",
+                    action: isB2B ? "Argumentar retorno de inversión, baja tasa de recambios, garantías institucionales y facilidad de instalación." : "No justificar el precio. Justificar el valor, la longevidad y el diseño. Pivotar a marcas accesibles (Roca Ona) si es imperativo.",
+                    script: isB2B ? "Comprendo el ajuste del presupuesto. Sin embargo, especificar Axor reduce el mantenimiento posventa y eleva la categoría inmobiliaria del proyecto." : "Nolte es una inversión a largo plazo que mantiene su diseño intacto por décadas. Si lo prefieres, podemos explorar colecciones como Roca que optimizan el presupuesto sin perder diseño."
+                },
+                { 
+                    id: 'fase3', 
+                    title: '3. Objeción: Tiempos de Importación', 
+                    context: "Marcas como Poliform o Gessi tardan meses en llegar. El cliente tiene urgencia.",
+                    action: isB2B ? "Cruzar fechas con su cronograma de obra blanca. Mostrar que el tiempo calza con el final de la obra." : "Enfocarse en la fabricación 'a medida'. Ofrecer el catálogo de inventario local como contingencia.",
+                    script: isB2B ? "Revisemos tu cronograma. Estas piezas se instalan al final. Si cerramos orden ahora, llegan justo para la fase blanca sin retrasar la entrega." : "Al ser fabricadas sobre pedido en Italia, garantizas una pieza única. Mientras llega, avanzamos con las adecuaciones. O si urge, te envío las opciones premium disponibles en inventario local."
+                },
+                { 
+                    id: 'fase4', 
+                    title: '4. Cross-Selling Estratégico', 
+                    context: "El cliente ya aceptó un producto. Es el momento de ampliar el ticket integrando el espacio.",
+                    action: isB2B ? "Si buscan pisos Mirage, sugerir griferías institucionales (Hansgrohe) para unificar proveedores." : "Si compran cocina Nolte o acabados, sugerir mobiliario Poliform para integrar áreas sociales.",
+                    script: isB2B ? "Dado que especificaron Mirage, sugeriría mantener la coherencia técnica integrando las griferías Hansgrohe; así unifican garantías y despachos con nosotros." : "Ya que elegiste la excelencia de Nolte, te sugiero integrar el mobiliario de Poliform para que todo el espacio social hable el mismo idioma de diseño europeo."
+                },
+                { 
+                    id: 'fase5', 
+                    title: '5. Protocolo Anti-Ghosting', 
+                    context: "El cliente dejó de responder por WhatsApp. No ser intrusivo.",
+                    action: "Secuencia de aportes de valor espaciados. Nunca preguntar '¿qué decidiste?'.",
+                    script: "<strong>Día 3:</strong> (Enviar Render) 'Hola, nos acaba de llegar este render de un proyecto reciente similar al tuyo, te lo comparto.'<br><strong>Día 10:</strong> 'Hola, actualizamos el catálogo de Laufen, te dejo el link por si te sirve para la obra.'<br><strong>Día 20:</strong> 'Dejaré tu cotización en el sistema. Quedo atento para apoyarte cuando retomes el proyecto.'"
+                }
+            ];
+        }
+
         function renderTreeContent() {
             document.getElementById('step-resultados').classList.remove('hidden');
             const container = document.getElementById('accordion-container');
-            const isB2B = typeState === 'b2b';
-
-            const treeData = [
-                {
-                    id: 'fase1', title: '1. Fase de Interés Inicial',
-                    content: isB2B 
-                        ? `<strong>Objetivo B2B:</strong> Perfilar proyecto y enviar recursos.<br><br>Saludar formalmente. Consultar de inmediato el tipo de obra y fase arquitectónica. Derivar catálogos técnicos (ej. Hansgrohe/Laufen) y archivos BIM/CAD para facilitar la especificación del arquitecto.`
-                        : `<strong>Objetivo B2C:</strong> Inspirar y agendar visita.<br><br>Responder con cercanía y elegancia. Indagar sobre el estilo que buscan para su remodelación. Enviar imágenes de proyectos reales y sugerir fuertemente agendar una visita al showroom para vivir las texturas de Poliform o Nolte.`
-                },
-                {
-                    id: 'fase2', title: '2. Manejo de Objeción: Precio',
-                    content: isB2B
-                        ? `<strong>Enfoque B2B:</strong> ROI y Durabilidad.<br><br>"Comprendo que el presupuesto es estructurado. Sin embargo, especificar griferías Axor o sanitarios Roca institucionales reduce drásticamente el mantenimiento post-venta y eleva la certificación de lujo de su obra, lo que justifica el retorno de inversión."`
-                        : `<strong>Enfoque B2C:</strong> Lujo y Longevidad.<br><br>"Es una observación válida. Nuestros productos son una inversión a largo plazo; marcas como Gessi o Antoniolupi garantizan que el diseño y los materiales permanezcan intactos por décadas. Si lo deseas, podemos explorar gamas que optimicen la inversión sin perder el lujo europeo."`
-                },
-                {
-                    id: 'fase3', title: '3. Manejo de Objeción: Tiempos de Importación',
-                    content: `<strong>Estrategia General:</strong><br><br>Si el cliente objeta esperar 90-120 días por productos europeos:<br>1. Validar el cronograma real de la obra (estos productos se instalan al final).<br>2. Explicar el valor de la personalización ("Se fabrica a la medida en Italia/Alemania").<br>3. Plan B: Ofrecer opciones premium disponibles en inventario local para entrega inmediata.`
-                },
-                {
-                    id: 'fase4', title: '4. Cross-Selling Estratégico',
-                    content: isB2B
-                        ? `<strong>Integración de Proyecto:</strong> Si el arquitecto entra cotizando pisos Mirage, sugerir integrar fachadas ventiladas o baños completos Laufen/Gessi para "asegurar que el lenguaje técnico y estético sea coherente en todo el proyecto."`
-                        : `<strong>Unificación de Estilo:</strong> Si consultan por cocinas Nolte, pivotar a: "Para complementar el minimalismo alemán de tu cocina, te sugiero integrar el mobiliario Poliform en el área social, logrando una transición perfecta."`
-                },
-                {
-                    id: 'fase5', title: '5. Protocolo Anti-Ghosting',
-                    content: `<strong>Secuencia de 3 pasos (Sin presión):</strong><br><br>
-                        • <strong>Día 3:</strong> Aporte de valor visual. Enviar un render o foto de un proyecto similar terminado. ("Hola, recordé tu proyecto y quise compartirte cómo se ve esta línea ya instalada").<br>
-                        • <strong>Día 7:</strong> Novedad técnica/catálogo. ("Nos acaba de llegar la actualización de colecciones Roca, te la comparto por si suma a tus ideas").<br>
-                        • <strong>Día 15:</strong> Retirada elegante. ("Dejaré tu cotización en sistema. Quedo a tu disposición cuando retomes el proyecto. Un saludo").`
-                }
-            ];
+            const treeData = getTreeData(originState, typeState);
 
             let html = '';
-            treeData.forEach((item, index) => {
+            treeData.forEach(item => {
                 html += `
                     <div>
                         <button onclick="toggleAccordion('${item.id}')" class="w-full text-left p-6 flex items-center justify-between hover:bg-gray-50 transition-colors">
-                            <h3 class="text-base font-semibold text-gray-900">${item.title}</h3>
-                            <i id="icon-${item.id}" class="fa-solid fa-chevron-down text-gray-400 acc-icon transition-transform duration-300"></i>
+                            <h3 class="text-sm font-semibold text-gray-900">${item.title}</h3>
+                            <i id="icon-${item.id}" class="fa-solid fa-chevron-down text-gray-400 acc-icon transition-transform duration-300 text-xs"></i>
                         </button>
-                        <div id="acc-${item.id}" class="accordion-content bg-gray-50 border-t border-gray-100">
-                            <div class="p-6 text-sm text-gray-600 leading-relaxed">
-                                ${item.content}
+                        <div id="acc-${item.id}" class="accordion-content bg-white border-t border-gray-100">
+                            <div class="p-6 text-sm text-gray-600 leading-relaxed space-y-4 bg-gray-50 m-4 rounded-lg">
+                                <div><strong class="text-gray-900 block mb-1">Contexto Comercial:</strong> ${item.context}</div>
+                                <div><strong class="text-gray-900 block mb-1">Acción Sugerida:</strong> ${item.action}</div>
+                                <div class="bg-gray-900 text-white p-4 rounded mt-4">
+                                    <strong class="block mb-1 text-gray-400 text-xs uppercase tracking-widest">Ejemplo de Respuesta (WhatsApp):</strong>
+                                    <span class="italic text-gray-200">"${item.script}"</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -455,17 +463,27 @@
             setTimeout(() => toggleAccordion('fase1'), 100);
         }
 
-        // --- SIMULADOR IA (GEMINI API) ---
+        // --- AI CHAT SIMULATOR LOGIC ---
         let chatHistory = [];
-        const systemInstructionText = "Eres un asesor comercial experto y de lujo que trabaja para Productos Arquitectónicos en Colombia. Vendes acabados arquitectónicos, baños, cocinas e iluminación de marcas de lujo europeas como Poliform, Nolte, Hansgrohe, Axor, Grohe, Roca, Gessi, Laufen, Antoniolupi y Mirage. Tu tono es elegante, consultivo, amable y resolutivo. Ayudas a perfilar al cliente, ofreces enviar catálogos técnicos o renders, manejas objeciones de precio o tiempos de importación con gracia, e intentas llevar al cliente a visitar el showroom o agendar una asesoría. El usuario simulará ser el cliente escribiéndote desde WhatsApp o Instagram.";
+        
+        const systemInstructionText = `
+Actúa como asesor comercial de lujo de "Productos Arquitectónicos" (Colombia).
+Marcas: Poliform, Nolte, Axor, Hansgrohe, Roca, Mirage, Gessi, Laufen.
+REGLAS ESTRICTAS E INQUEBRANTABLES:
+1. Responde SIEMPRE en 1 o máximo 2 oraciones cortas.
+2. Estás en un chat de WhatsApp. Sé ágil, directo, conversacional y elegante.
+3. NUNCA des respuestas largas. NUNCA escribas párrafos grandes. NUNCA uses viñetas ni formatos de lista.
+4. Mantén el tono de lujo. Justifica precios por valor/diseño. Ofrece opciones de entrega local si se quejan de importación.
+5. Cierra siempre con una pregunta natural para guiar al cliente.
+`;
 
         function resetChat() {
             chatHistory = [];
             const cw = document.getElementById('chat-window');
             cw.innerHTML = `
                 <div class="flex justify-start">
-                    <div class="max-w-[80%] rounded-2xl rounded-tl-sm p-4 text-sm leading-relaxed bg-gray-100 text-gray-800 border border-gray-200">
-                        ¡Hola! Soy tu asesor virtual. Pon a prueba mis habilidades simulando una objeción de precio, preguntando por tiempos de entrega de Poliform o Nolte, solicitando griferías Axor, o simulando que dejaste de responderme.
+                    <div class="max-w-[85%] md:max-w-[70%] rounded-2xl rounded-tl-sm p-4 text-sm leading-relaxed bg-white text-gray-800 border border-gray-200 shadow-sm">
+                        ¡Hola! Soy el simulador. Escríbeme objeciones reales de clientes (ej. "Tardan mucho", "Poliform es muy caro", "Quiero un lavamanos") y te mostraré cómo respondería un asesor ideal por WhatsApp.
                     </div>
                 </div>
             `;
@@ -477,10 +495,10 @@
             
             if(role === 'user') {
                 div.className = "flex justify-end";
-                div.innerHTML = `<div class="max-w-[80%] rounded-2xl rounded-tr-sm p-4 text-sm leading-relaxed bg-gray-900 text-white shadow-sm">${text}</div>`;
+                div.innerHTML = `<div class="max-w-[85%] md:max-w-[70%] rounded-2xl rounded-tr-sm p-4 text-sm leading-relaxed bg-gray-900 text-white shadow-sm">${text}</div>`;
             } else {
                 div.className = "flex justify-start";
-                div.innerHTML = `<div class="max-w-[80%] rounded-2xl rounded-tl-sm p-4 text-sm leading-relaxed bg-gray-100 text-gray-800 border border-gray-200 shadow-sm">${text}</div>`;
+                div.innerHTML = `<div class="max-w-[85%] md:max-w-[70%] rounded-2xl rounded-tl-sm p-4 text-sm leading-relaxed bg-white text-gray-800 border border-gray-200 shadow-sm">${text}</div>`;
             }
             
             cw.appendChild(div);
@@ -493,7 +511,7 @@
             div.id = "typing-indicator";
             div.className = "flex justify-start";
             div.innerHTML = `
-                <div class="rounded-2xl rounded-tl-sm p-4 bg-gray-100 border border-gray-200 typing-indicator flex items-center h-12 shadow-sm">
+                <div class="rounded-2xl rounded-tl-sm px-5 py-4 bg-white border border-gray-200 typing-indicator flex items-center h-12 shadow-sm">
                     <span></span><span></span><span></span>
                 </div>`;
             cw.appendChild(div);
@@ -509,8 +527,11 @@
             e.preventDefault();
             const input = document.getElementById('chat-input');
             const btn = document.getElementById('chat-submit');
-            const text = input.value.trim();
             
+            const customApiKey = document.getElementById('api-key-input').value.trim();
+            const apiKey = customApiKey || ""; 
+            
+            const text = input.value.trim();
             if(!text) return;
             
             input.value = '';
@@ -523,8 +544,6 @@
             showTypingIndicator();
 
             try {
-                // The runtime provides the key automatically when empty
-                const apiKey = ""; 
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
                 
                 const payload = {
@@ -551,14 +570,13 @@
                     chatHistory.push({ role: 'model', parts: [{ text: aiText }] });
                     appendMessage('model', aiText);
                 } else {
-                    appendMessage('model', "Lo siento, hubo un problema procesando la respuesta.");
+                    appendMessage('model', "Hubo un error al generar la respuesta.");
                 }
 
             } catch (error) {
                 removeTypingIndicator();
                 console.error(error);
-                appendMessage('model', "⚠️ Simulador fuera de línea o error de conexión. Por favor intenta de nuevo.");
-                // Remove the failed user message from history so it doesn't break future context
+                appendMessage('model', "⚠️ Error. Si exportaste este archivo fuera de Canvas, asegúrate de colocar tu API Key de Gemini en el recuadro superior.");
                 chatHistory.pop();
             } finally {
                 input.disabled = false;
