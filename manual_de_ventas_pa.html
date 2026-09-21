@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Ventas - Productos Arquitectónicos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        amber: { 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706' },
+                        zinc: { 800: '#27272a', 900: '#18181b', 950: '#09090b' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #09090b; color: #f4f4f5; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        .tab-content { display: none; animation: fadeIn 0.4s ease-in-out; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #27272a; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .accordion-content.open { max-height: 500px; }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden selection:bg-amber-500/30 selection:text-amber-200">
+
+    <!-- Sidebar (Desktop) -->
+    <aside class="hidden md:flex flex-col w-72 bg-zinc-900 border-r border-zinc-800 shrink-0 shadow-2xl relative z-20">
+        <div class="p-8 border-b border-zinc-800">
+            <h1 class="text-white text-xl font-bold tracking-[0.15em] uppercase leading-tight">
+                Productos<br/><span class="text-amber-500 font-light">Arquitectónicos</span>
+            </h1>
+            <div class="mt-4 inline-block bg-zinc-950 border border-zinc-800 text-amber-500/70 text-[10px] tracking-widest px-2 py-1 rounded font-medium">
+                MANUAL COMERCIAL V2
+            </div>
+        </div>
+        
+        <nav class="flex-1 py-6 px-4 space-y-2 overflow-y-auto custom-scrollbar" id="nav-desktop">
+            <button onclick="switchTab('perfiles')" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm transition-all duration-200 bg-zinc-800 text-amber-400 font-medium border border-zinc-700/50" data-target="perfiles">
+                <i class="fa-solid fa-users w-5"></i> Perfiles y Tono
+            </button>
+            <button onclick="switchTab('protocolos')" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm transition-all duration-200 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50 border border-transparent" data-target="protocolos">
+                <i class="fa-regular fa-comments w-5"></i> Protocolos por Canal
+            </button>
+            <button onclick="switchTab('arbol')" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm transition-all duration-200 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50 border border-transparent" data-target="arbol">
+                <i class="fa-solid fa-network-wired w-5"></i> Árbol de Decisión
+            </button>
+            <button onclick="switchTab('simulador')" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm transition-all duration-200 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50 border border-transparent" data-target="simulador">
+                <i class="fa-solid fa-robot w-5"></i> Simulador IA
+            </button>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col min-w-0 bg-zinc-950 relative">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-amber-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+        
+        <!-- Mobile Header & Nav -->
+        <div class="md:hidden flex flex-col shrink-0 border-b border-zinc-800 bg-zinc-900 z-20">
+            <div class="p-4 flex items-center justify-center">
+               <h1 class="text-white text-sm font-bold tracking-[0.15em] uppercase">Productos <span class="text-amber-500 font-light">Arq.</span></h1>
+            </div>
+            <div class="flex overflow-x-auto custom-scrollbar px-2 py-3 snap-x gap-2" id="nav-mobile">
+                <button onclick="switchTab('perfiles')" class="nav-btn snap-start shrink-0 flex items-center gap-2 px-4 py-2 rounded-full text-xs transition-colors bg-zinc-800 text-amber-400 font-semibold border border-zinc-700/50" data-target="perfiles">Perfiles</button>
+                <button onclick="switchTab('protocolos')" class="nav-btn snap-start shrink-0 flex items-center gap-2 px-4 py-2 rounded-full text-xs transition-colors text-zinc-400 border border-transparent" data-target="protocolos">Canales</button>
+                <button onclick="switchTab('arbol')" class="nav-btn snap-start shrink-0 flex items-center gap-2 px-4 py-2 rounded-full text-xs transition-colors text-zinc-400 border border-transparent" data-target="arbol">Procesos</button>
+                <button onclick="switchTab('simulador')" class="nav-btn snap-start shrink-0 flex items-center gap-2 px-4 py-2 rounded-full text-xs transition-colors text-zinc-400 border border-transparent" data-target="simulador">Simulador</button>
+            </div>
+        </div>
+
+        <div class="flex-1 overflow-y-auto custom-scrollbar p-6 md:p-10 lg:p-12 relative z-10">
+            <div class="max-w-5xl mx-auto h-full pb-20">
+
+                <!-- SECTION 1: PERFILES Y TONO -->
+                <section id="perfiles" class="tab-content active space-y-10">
+                    <div class="border-b border-zinc-800 pb-6">
+                        <h2 class="text-3xl font-light text-zinc-100 tracking-tight flex items-center gap-3">
+                            <i class="fa-solid fa-users text-amber-500"></i> Perfiles y Tono de Marca
+                        </h2>
+                        <p class="text-zinc-400 mt-2 text-lg">Definición de nuestra audiencia y el estándar de comunicación.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- B2B -->
+                        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 relative overflow-hidden group hover:border-zinc-700 transition-colors">
+                            <div class="w-12 h-12 bg-zinc-950 border border-zinc-800 text-amber-500 rounded-xl flex items-center justify-center mb-6">
+                                <i class="fa-regular fa-building text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-white mb-2">B2B (Profesional)</h3>
+                            <p class="text-amber-500/80 text-sm font-medium tracking-wide uppercase mb-6">Arquitectos, Constructoras, Interioristas</p>
+                            <ul class="space-y-4 text-sm text-zinc-300">
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-500 mt-1"></i><span><strong>Enfoque:</strong> Especificaciones técnicas, viabilidad, garantías. Buscan un aliado estratégico.</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-500 mt-1"></i><span><strong>Acción Clave:</strong> Envío inmediato de fichas técnicas, catálogos BIM/CAD y renders de presentación.</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-500 mt-1"></i><span><strong>Marcas Frecuentes:</strong> Laufen institucional, Hansgrohe, porcelanatos Mirage gran formato.</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- B2C -->
+                        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 relative overflow-hidden group hover:border-zinc-700 transition-colors">
+                            <div class="w-12 h-12 bg-zinc-950 border border-zinc-800 text-amber-500 rounded-xl flex items-center justify-center mb-6">
+                                <i class="fa-regular fa-user text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-white mb-2">B2C (Cliente Final)</h3>
+                            <p class="text-amber-500/80 text-sm font-medium tracking-wide uppercase mb-6">Propietarios, Remodelaciones de Lujo</p>
+                            <ul class="space-y-4 text-sm text-zinc-300">
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-500 mt-1"></i><span><strong>Enfoque:</strong> Estilo de vida, aspiracionalidad, diseño. Compran el "sueño" de un espacio.</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-500 mt-1"></i><span><strong>Acción Clave:</strong> Venta consultiva. Invitar al showroom para vivir la experiencia táctil.</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-500 mt-1"></i><span><strong>Marcas Frecuentes:</strong> Poliform (Mobiliario), Nolte (Cocinas), Gessi y Axor.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-zinc-900 border border-amber-900/30 rounded-2xl p-8">
+                        <h3 class="text-xl font-semibold text-amber-500 mb-4 flex items-center gap-2"><i class="fa-solid fa-sparkles"></i> Tono de Marca (Brand Voice)</h3>
+                        <p class="text-zinc-300 text-sm mb-4">El tono es <strong>elegante, experto y minimalista</strong>. Evitamos ser insistentes o usar lenguaje excesivamente promocional.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                            <div class="border-l-2 border-green-500/50 pl-4">
+                                <strong class="text-green-400 block mb-1">Sí hacer:</strong>
+                                <span class="text-zinc-400">Trato de "Tú" respetuoso. Vocabulario de diseño ("textura", "vanguardia"). Centrarse en la experiencia.</span>
+                            </div>
+                            <div class="border-l-2 border-red-500/50 pl-4">
+                                <strong class="text-red-400 block mb-1">No hacer:</strong>
+                                <span class="text-zinc-400">Diminutivos. Presionar cierre inmediato. Dar precios fríos sin contexto ni asesoría.</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 2: PROTOCOLOS POR CANAL -->
+                <section id="protocolos" class="tab-content space-y-10">
+                    <div class="border-b border-zinc-800 pb-6">
+                        <h2 class="text-3xl font-light text-zinc-100 tracking-tight flex items-center gap-3">
+                            <i class="fa-regular fa-comments text-amber-500"></i> Protocolos por Canal
+                        </h2>
+                        <p class="text-zinc-400 mt-2 text-lg">Reglas de gestión para optimizar la conversión.</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl flex flex-col md:flex-row gap-6 items-start">
+                            <div class="w-14 h-14 bg-green-500/10 text-green-500 rounded-xl flex items-center justify-center shrink-0">
+                                <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2">WhatsApp (Canal Principal)</h3>
+                                <ul class="space-y-3 text-sm text-zinc-300">
+                                    <li><strong class="text-green-400">Cualificación:</strong> Identificar tipo de proyecto en los primeros 2 mensajes.</li>
+                                    <li><strong class="text-green-400">Enrutamiento:</strong> Si piden sanitarios/griferías generales, enviar PDF de Hansgrohe (funcionalidad) o Axor (exclusividad/lujo) según el perfil.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl flex flex-col md:flex-row gap-6 items-start">
+                            <div class="w-14 h-14 bg-blue-500/10 text-blue-500 rounded-xl flex items-center justify-center shrink-0">
+                                <i class="fa-brands fa-instagram text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2">Redes Sociales & Pauta (Meta Ads)</h3>
+                                <ul class="space-y-3 text-sm text-zinc-300">
+                                    <li><strong class="text-blue-400">SLA:</strong> Respuesta en menos de 15 minutos.</li>
+                                    <li><strong class="text-blue-400">Campañas Ancla:</strong> Leads de sanitarios derivarlos a líneas Roca Ona o Infinity. Enviar fotos de ambiente antes del PDF técnico. Siempre buscar llevar la conversación a WhatsApp.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl flex flex-col md:flex-row gap-6 items-start">
+                            <div class="w-14 h-14 bg-purple-500/10 text-purple-500 rounded-xl flex items-center justify-center shrink-0">
+                                <i class="fa-regular fa-envelope text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2">Correo Electrónico</h3>
+                                <ul class="space-y-3 text-sm text-zinc-300">
+                                    <li><strong class="text-purple-400">Outreach B2B:</strong> Presentaciones a nuevas firmas arquitectónicas con enlaces a galerías web, no adjuntos pesados.</li>
+                                    <li><strong class="text-purple-400">Seguimiento:</strong> Registro formal de especificaciones y acuerdos de importación.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 3: ÁRBOL DE DECISIÓN -->
+                <section id="arbol" class="tab-content space-y-8">
+                    <div class="border-b border-zinc-800 pb-6 flex justify-between items-end">
+                        <div>
+                            <h2 class="text-3xl font-light text-zinc-100 tracking-tight flex items-center gap-3">
+                                <i class="fa-solid fa-network-wired text-amber-500"></i> Árbol de Decisión & Procesos
+                            </h2>
+                            <p class="text-zinc-400 mt-2 text-lg">Selecciona origen y tipo de cliente para ver los protocolos.</p>
+                        </div>
+                        <button onclick="resetTree()" class="hidden md:block text-zinc-400 hover:text-white border border-zinc-700 px-3 py-1.5 rounded-lg text-sm bg-zinc-800">
+                            <i class="fa-solid fa-rotate-right"></i> Reiniciar
+                        </button>
+                    </div>
+
+                    <!-- Step 1: Origen -->
+                    <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl">
+                        <h3 class="text-white font-semibold mb-4 flex items-center gap-2"><span class="bg-amber-500 text-zinc-900 w-6 h-6 rounded-full flex items-center justify-center text-xs">1</span> Origen de Entrada</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                            <button onclick="selectOrigin('pauta', this)" class="btn-origin p-4 rounded-xl border border-zinc-800 bg-zinc-950 text-left hover:border-zinc-700 transition-colors">
+                                <div class="font-semibold text-zinc-200 mb-1"><i class="fa-solid fa-bullseye text-zinc-500 mr-2"></i>Pauta Digital (Ads)</div>
+                                <div class="text-xs text-zinc-500">Alta intención, impaciente.</div>
+                            </button>
+                            <button onclick="selectOrigin('organico', this)" class="btn-origin p-4 rounded-xl border border-zinc-800 bg-zinc-950 text-left hover:border-zinc-700 transition-colors">
+                                <div class="font-semibold text-zinc-200 mb-1"><i class="fa-solid fa-magnifying-glass text-zinc-500 mr-2"></i>Orgánico (Web/IG)</div>
+                                <div class="text-xs text-zinc-500">Explorando, buscando ideas.</div>
+                            </button>
+                            <button onclick="selectOrigin('actual', this)" class="btn-origin p-4 rounded-xl border border-zinc-800 bg-zinc-950 text-left hover:border-zinc-700 transition-colors">
+                                <div class="font-semibold text-zinc-200 mb-1"><i class="fa-solid fa-address-book text-zinc-500 mr-2"></i>Cliente Actual</div>
+                                <div class="text-xs text-zinc-500">Ya nos conoce.</div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Tipo -->
+                    <div id="step-tipo" class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl hidden">
+                        <h3 class="text-white font-semibold mb-4 flex items-center gap-2"><span class="bg-amber-500 text-zinc-900 w-6 h-6 rounded-full flex items-center justify-center text-xs">2</span> Tipo de Cliente</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <button onclick="selectType('b2b', this)" class="btn-type p-4 rounded-xl border border-zinc-800 bg-zinc-950 text-left hover:border-zinc-700 transition-colors">
+                                <div class="font-semibold text-zinc-200 mb-1"><i class="fa-regular fa-building text-zinc-500 mr-2"></i>B2B (Profesional)</div>
+                                <div class="text-xs text-zinc-500">Especificadores, arquitectos.</div>
+                            </button>
+                            <button onclick="selectType('b2c', this)" class="btn-type p-4 rounded-xl border border-zinc-800 bg-zinc-950 text-left hover:border-zinc-700 transition-colors">
+                                <div class="font-semibold text-zinc-200 mb-1"><i class="fa-regular fa-user text-zinc-500 mr-2"></i>B2C (Cliente Final)</div>
+                                <div class="text-xs text-zinc-500">Remodelación, aspiracional.</div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Resultados -->
+                    <div id="step-resultados" class="bg-zinc-900 border border-zinc-800 rounded-2xl hidden overflow-hidden">
+                        <div class="bg-zinc-950 border-b border-zinc-800 p-4 text-center">
+                            <h4 class="text-amber-500 font-semibold text-sm uppercase tracking-widest">Protocolo Comercial</h4>
+                        </div>
+                        
+                        <!-- Accordion Items (populated by JS based on selection) -->
+                        <div id="accordion-container" class="divide-y divide-zinc-800">
+                            <!-- Filled dynamically -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 4: SIMULADOR IA -->
+                <section id="simulador" class="tab-content h-[75vh] flex flex-col">
+                    <div class="border-b border-zinc-800 pb-4 shrink-0">
+                        <h2 class="text-3xl font-light text-zinc-100 tracking-tight flex items-center gap-3">
+                            <i class="fa-solid fa-robot text-amber-500"></i> Simulador Comercial
+                        </h2>
+                        <p class="text-zinc-400 mt-2 text-sm">Prueba el tono, objeciones y cross-selling. Escribe palabras clave como "precio", "tiempo", "mirage", "nolte" para ver las respuestas ideales del manual.</p>
+                    </div>
+
+                    <div class="flex-1 min-h-0 bg-zinc-900 border border-zinc-800 rounded-2xl mt-4 flex flex-col overflow-hidden">
+                        <div class="bg-zinc-950 border-b border-zinc-800 p-4 flex items-center gap-3 shrink-0">
+                            <div class="w-10 h-10 bg-zinc-800 rounded-full flex items-center justify-center border border-zinc-700 relative">
+                                <i class="fa-solid fa-robot text-amber-400"></i>
+                                <span class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-zinc-950 rounded-full"></span>
+                            </div>
+                            <div>
+                                <h4 class="text-zinc-100 font-medium leading-tight">Asesor Virtual (PA)</h4>
+                                <p class="text-zinc-500 text-xs">Entrenado con el Manual Comercial</p>
+                            </div>
+                        </div>
+
+                        <div id="chat-window" class="flex-1 overflow-y-auto p-6 space-y-4 bg-zinc-950/50 custom-scrollbar">
+                            <!-- Chat initial message -->
+                            <div class="flex justify-start">
+                                <div class="max-w-[75%] rounded-2xl p-4 text-sm leading-relaxed bg-zinc-800 border border-zinc-700 text-zinc-200 rounded-tl-sm shadow-md">
+                                    ¡Hola! Soy tu Asesor Ideal. Escríbeme como si fueras un cliente planteando dudas u objeciones (ej. "Está muy caro", "Tardan mucho", "Quiero ver pisos Mirage"). Aplicaré los protocolos del manual para responderte.
+                                </div>
+                            </div>
+                        </div>
+
+                        <form id="chat-form" onsubmit="handleChatSubmit(event)" class="bg-zinc-950 p-4 border-t border-zinc-800 flex gap-3 shrink-0">
+                            <input type="text" id="chat-input" autocomplete="off" placeholder="Escribe tu objeción o consulta aquí..." class="flex-1 bg-zinc-900 border border-zinc-700 text-zinc-200 text-sm rounded-xl p-3 focus:outline-none focus:border-amber-500/50">
+                            <button type="submit" class="bg-amber-500 text-zinc-950 px-6 rounded-xl font-bold hover:bg-amber-400 transition-colors">Enviar</button>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Tab Navigation Logic
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            
+            // Update UI buttons (Desktop)
+            document.querySelectorAll('#nav-desktop .nav-btn').forEach(btn => {
+                if(btn.dataset.target === tabId) {
+                    btn.classList.add('bg-zinc-800', 'text-amber-400', 'font-medium', 'border-zinc-700/50');
+                    btn.classList.remove('text-zinc-400', 'hover:bg-zinc-800/50', 'border-transparent');
+                } else {
+                    btn.classList.remove('bg-zinc-800', 'text-amber-400', 'font-medium', 'border-zinc-700/50');
+                    btn.classList.add('text-zinc-400', 'hover:bg-zinc-800/50', 'border-transparent');
+                }
+            });
+
+            // Update UI buttons (Mobile)
+            document.querySelectorAll('#nav-mobile .nav-btn').forEach(btn => {
+                if(btn.dataset.target === tabId) {
+                    btn.classList.add('bg-zinc-800', 'text-amber-400', 'font-semibold', 'border-zinc-700/50');
+                    btn.classList.remove('text-zinc-400', 'border-transparent');
+                } else {
+                    btn.classList.remove('bg-zinc-800', 'text-amber-400', 'font-semibold', 'border-zinc-700/50');
+                    btn.classList.add('text-zinc-400', 'border-transparent');
+                }
+            });
+        }
+
+        // Decision Tree Logic
+        let currentOrigin = null;
+        let currentType = null;
+
+        function selectOrigin(origin, btnElement) {
+            currentOrigin = origin;
+            document.querySelectorAll('.btn-origin').forEach(btn => {
+                btn.classList.remove('border-amber-500', 'bg-amber-500/10');
+                btn.classList.add('border-zinc-800', 'bg-zinc-950');
+                btn.querySelector('i').classList.remove('text-amber-500');
+            });
+            btnElement.classList.add('border-amber-500', 'bg-amber-500/10');
+            btnElement.classList.remove('border-zinc-800', 'bg-zinc-950');
+            btnElement.querySelector('i').classList.add('text-amber-500');
+            
+            document.getElementById('step-tipo').classList.remove('hidden');
+            if(currentType) renderTree();
+        }
+
+        function selectType(type, btnElement) {
+            currentType = type;
+            document.querySelectorAll('.btn-type').forEach(btn => {
+                btn.classList.remove('border-amber-500', 'bg-amber-500/10');
+                btn.classList.add('border-zinc-800', 'bg-zinc-950');
+                btn.querySelector('i').classList.remove('text-amber-500');
+            });
+            btnElement.classList.add('border-amber-500', 'bg-amber-500/10');
+            btnElement.classList.remove('border-zinc-800', 'bg-zinc-950');
+            btnElement.querySelector('i').classList.add('text-amber-500');
+            
+            renderTree();
+        }
+
+        function resetTree() {
+            currentOrigin = null;
+            currentType = null;
+            document.querySelectorAll('.btn-origin, .btn-type').forEach(btn => {
+                btn.classList.remove('border-amber-500', 'bg-amber-500/10');
+                btn.classList.add('border-zinc-800', 'bg-zinc-950');
+                btn.querySelector('i').classList.remove('text-amber-500');
+            });
+            document.getElementById('step-tipo').classList.add('hidden');
+            document.getElementById('step-resultados').classList.add('hidden');
+        }
+
+        function toggleAccordion(id) {
+            const content = document.getElementById(`acc-content-${id}`);
+            const icon = document.getElementById(`acc-icon-${id}`);
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                // Close all others
+                document.querySelectorAll('.accordion-content').forEach(el => el.classList.remove('open'));
+                document.querySelectorAll('.acc-icon').forEach(el => el.style.transform = 'rotate(0deg)');
+                // Open clicked
+                content.classList.add('open');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        function renderTree() {
+            if(!currentOrigin || !currentType) return;
+            document.getElementById('step-resultados').classList.remove('hidden');
+            
+            const container = document.getElementById('accordion-container');
+            
+            // Dynamic content logic based on B2B/B2C and Origin
+            const isB2B = currentType === 'b2b';
+            
+            const contentData = [
+                {
+                    id: 'fase1', icon: 'fa-layer-group', title: '1. Fase de Interés Inicial',
+                    content: isB2B 
+                        ? `<strong>Acción B2B:</strong> Preguntar metraje y tipo de obra. Enviar inmediatamente links a catálogos BIM/CAD y renders técnicos de presentación (ej. griferías Axor/Hansgrohe para institucional).` 
+                        : `<strong>Acción B2C:</strong> Indagar sobre estilo de vida. Enviar Lookbooks inspiracionales. El objetivo principal es invitarlo a agendar una cita en el Showroom para ver Poliform, Nolte o Gessi en persona.`
+                },
+                {
+                    id: 'fase2', icon: 'fa-dollar-sign', title: '2. Manejo de Objeción: Precio',
+                    content: isB2B 
+                        ? `<strong>Script:</strong> "Entiendo que el presupuesto es ajustado. Sin embargo, especificar marcas como Gessi o Axor reduce costos de mantenimiento y eleva la categoría de su proyecto, justificando un mayor precio de venta."` 
+                        : `<strong>Script:</strong> "Es importante ver esto como una inversión a largo plazo para tu hogar. Una cocina Nolte está fabricada en Alemania garantizando funcionalidad por décadas. Si lo deseas, podemos explorar la línea Roca (Ona/Infinity) a un punto más accesible."`
+                },
+                {
+                    id: 'fase3', icon: 'fa-clock', title: '3. Manejo de Objeción: Tiempo de Entrega',
+                    content: isB2B 
+                        ? `<strong>Estrategia:</strong> Sincronizar con cronograma de obra. "Estas piezas se instalan en obra blanca. Si cerramos la orden ahora, el producto llegará justo a tiempo sin retrasar su obra."` 
+                        : `<strong>Estrategia:</strong> Valor de la exclusividad. "Al ser fabricadas sobre pedido en Europa, garantizas un producto único. Mientras llega, avanzamos con adecuaciones. O te envío opciones premium de inventario local."`
+                },
+                {
+                    id: 'fase4', icon: 'fa-retweet', title: '4. Cross-Selling Estratégico',
+                    content: `<strong>Estrategia:</strong> Si el cliente entra por Pisos Mirage, sugerir integrar ${isB2B ? 'griferías Axor/Roca institucionales' : 'mobiliario Poliform o Nolte'} para "mantener la coherencia arquitectónica y que todo el proyecto hable el mismo idioma europeo".`
+                },
+                {
+                    id: 'fase5', icon: 'fa-ghost', title: '5. Protocolo Anti-Ghosting',
+                    content: `<strong>Día 3:</strong> Enviar un render de proyecto inspiracional.<br><strong>Día 7:</strong> Actualización de valor ("Llegó el nuevo catálogo...").<br><strong>Día 15:</strong> "Dejaré tu cotización abierta. Quedo atento cuando retomes la obra."`
+                }
+            ];
+
+            let html = '';
+            contentData.forEach((item, index) => {
+                html += `
+                    <div>
+                        <button onclick="toggleAccordion('${item.id}')" class="w-full text-left p-4 md:p-6 flex items-center justify-between hover:bg-zinc-800/50 transition-colors">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-zinc-800 text-zinc-400 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid ${item.icon}"></i>
+                                </div>
+                                <h3 class="text-base font-semibold text-zinc-100">${item.title}</h3>
+                            </div>
+                            <i id="acc-icon-${item.id}" class="fa-solid fa-chevron-down text-zinc-500 acc-icon transition-transform duration-300"></i>
+                        </button>
+                        <div id="acc-content-${item.id}" class="accordion-content bg-zinc-800/30">
+                            <div class="p-4 md:p-6 pt-0 text-sm text-zinc-300">
+                                ${item.content}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+            
+            // Auto open first accordion
+            setTimeout(() => toggleAccordion('fase1'), 100);
+        }
+
+        // Chat Simulator Logic (Rule-based for offline HTML)
+        const chatWindow = document.getElementById('chat-window');
+        const chatInput = document.getElementById('chat-input');
+
+        function appendMessage(sender, text) {
+            const div = document.createElement('div');
+            div.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
+            
+            const bubble = document.createElement('div');
+            bubble.className = sender === 'user' 
+                ? 'max-w-[75%] rounded-2xl p-4 text-sm leading-relaxed bg-amber-600 text-white rounded-tr-sm shadow-md'
+                : 'max-w-[75%] rounded-2xl p-4 text-sm leading-relaxed bg-zinc-800 border border-zinc-700 text-zinc-200 rounded-tl-sm shadow-md';
+            bubble.innerHTML = text;
+            
+            div.appendChild(bubble);
+            chatWindow.appendChild(div);
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+
+        function handleChatSubmit(e) {
+            e.preventDefault();
+            const text = chatInput.value.trim();
+            if(!text) return;
+            
+            appendMessage('user', text);
+            chatInput.value = '';
+
+            // Simulate typing and response
+            setTimeout(() => {
+                const response = getBotResponse(text.toLowerCase());
+                appendMessage('bot', response);
+            }, 600);
+        }
+
+        function getBotResponse(input) {
+            if (input.includes('precio') || input.includes('caro') || input.includes('costoso')) {
+                return "Comprendo perfectamente que el presupuesto es un factor clave. Sin embargo, es importante ver esto como una inversión a largo plazo; las marcas europeas como Nolte o Axor garantizan un diseño y funcionalidad que no se devalúan. Si lo deseas, podemos revisar líneas premium más accesibles como Roca Ona.";
+            } else if (input.includes('tiempo') || input.includes('demora') || input.includes('meses') || input.includes('importar')) {
+                return "Entiendo tu preocupación por los tiempos. Al ser piezas fabricadas sobre pedido en Europa (Italia/Alemania), garantizamos que recibas un producto de lujo exclusivo para tu espacio. Si tienes urgencia, permíteme enviarte el catálogo de productos premium que tenemos para entrega inmediata en inventario local.";
+            } else if (input.includes('mirage') || input.includes('piso') || input.includes('porcelanato')) {
+                return "Excelente elección. Los formatos de Mirage aportan una sofisticación única al espacio. Ya que te interesa este nivel de acabados, ¿has considerado integrar mobiliario de Poliform o grifería Gessi? Mantener la coherencia estética europea en todo el proyecto eleva muchísimo el resultado final.";
+            } else if (input.includes('hola') || input.includes('buenos dias') || input.includes('buenas tardes')) {
+                return "¡Hola! Qué gusto saludarte. Cuéntame, ¿estás buscando inspiración para renovar tus espacios o ya tienes un proyecto arquitectónico en marcha?";
+            } else if (input.includes('nolte') || input.includes('cocina')) {
+                return "Las cocinas Nolte son espectaculares, combinan ingeniería alemana con diseños impecables. Para poder asesorarte mejor, ¿tienes medidas aproximadas del espacio o prefieres que agendemos una visita a nuestro showroom para que veas los acabados en persona?";
+            } else {
+                return "Interesante. En Productos Arquitectónicos nos enfocamos en brindar soluciones a medida con nuestras marcas (Poliform, Nolte, Axor, Mirage). Para darte la mejor asesoría, ¿me podrías contar si este requerimiento es para un proyecto personal o eres profesional de la construcción/diseño?";
+            }
+        }
+    </script>
+</body>
+</html>
