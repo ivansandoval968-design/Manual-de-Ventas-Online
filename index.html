@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manual de Ventas - Productos Arquitectónicos</title>
+    <title>Manual Comercial Integral | CEDEX & PA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -30,20 +30,21 @@
         .tab-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
-        ::-webkit-scrollbar { width: 5px; height: 5px; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #a1a1aa; }
         
+        /* Acordeón para el Árbol Digital */
         .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
         .accordion-content.open { max-height: 1000px; }
         
         .nav-btn.active { background-color: #f4f4f5; color: #18181b; font-weight: 600; border-left-color: #18181b; }
         .nav-btn-mobile.active { background-color: #18181b; color: white; font-weight: 600; }
         
-        .typing-indicator span { display: inline-block; width: 5px; height: 5px; background-color: #a1a1aa; border-radius: 50%; margin: 0 2px; animation: bounce 1.4s infinite ease-in-out both; }
-        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
-        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+        .chat-typing span { display: inline-block; width: 5px; height: 5px; background-color: #a1a1aa; border-radius: 50%; margin: 0 2px; animation: bounce 1.4s infinite ease-in-out both; }
+        .chat-typing span:nth-child(1) { animation-delay: -0.32s; }
+        .chat-typing span:nth-child(2) { animation-delay: -0.16s; }
         @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
     </style>
 </head>
@@ -56,21 +57,44 @@
                 Productos<br/><span class="font-light text-gray-400">Arquitectónicos</span>
             </h1>
             <div class="mt-4 inline-block bg-gray-100 text-gray-500 text-[9px] tracking-[0.2em] px-2 py-1.5 rounded-sm font-semibold uppercase">
-                Manual de Ventas
+                Manual Integral
             </div>
         </div>
         
         <nav class="flex-1 py-6 space-y-1 overflow-y-auto" id="nav-desktop">
-            <button onclick="switchTab('perfiles')" class="nav-btn w-full flex items-center gap-4 px-8 py-3.5 text-sm transition-all duration-200 text-gray-500 hover:text-gray-900 hover:bg-gray-50 border-l-4 border-transparent active" data-target="perfiles">
+            <!-- PRESENCIAL PRIMERO -->
+            <div class="px-8 mb-2 mt-2 text-[10px] font-bold text-gray-400 uppercase tracking-widest">I. Módulo Presencial</div>
+            <button onclick="switchTab('cedex_obj')" class="nav-btn w-full flex items-center gap-4 px-8 py-3 text-sm transition-all duration-200 text-gray-500 hover:text-gray-900 hover:bg-gray-50 border-l-4 border-transparent active" data-target="cedex_obj">
+                <i class="fa-solid fa-bullseye w-4 text-center"></i> 1. Objetivo y Regla
+            </button>
+            <button onclick="switchTab('cedex_est1')" class="nav-btn w-full flex items-center gap-4 px-8 py-3 text-sm transition-all duration-200 text-gray-500 hover:text-gray-900 hover:bg-gray-50 border-l-4 border-transparent" data-target="cedex_est1">
+                <i class="fa-solid fa-id-card w-4 text-center"></i> 2. Identificación
+            </button>
+            <button onclick="switchTab('cedex_est2')" class="nav-btn w-full flex items-center gap-4 px-8 py-3 text-sm transition-all duration-200 text-gray-500 hover:text-gray-900 hover:bg-gray-50 border-l-4 border-transparent" data-target="cedex_est2">
+                <i class="fa-solid fa-desktop w-4 text-center"></i> 3. Presentación
+            </button>
+            <button onclick="switchTab('cedex_est3')" class="nav-btn w-full flex items-center gap-4 px-8 py-3 text-sm transition-all duration-200 text-gray-500 hover:text-gray-900 hover:bg-gray-50 border-l-4 border-transparent" data-target="cedex_est3">
+                <i class="fa-solid fa-handshake w-4 text-center"></i> 4. Negociación
+            </button>
+            <button onclick="switchTab('cedex_est4')" class="nav-btn w-full flex items-center gap-4 px-8 py-3 text-sm transition-all duration-200 text-gray-500 hover:text-gray-900 hover:bg-gray-50 border-l-4 border-transparent" data-target="cedex_est4">
+                <i class="fa-solid fa-check-double w-4 text-center"></i> 5. Estado Cerrado
+            </button>
+            <button onclick="switchTab('cedex_anexo')" class="nav-btn w-full flex items-center gap-4 px-8 py-3 text-sm transition-all duration-200 text-gray-500 hover:text-gray-900 hover:bg-gray-50 border-l-4 border-transparent" data-target="cedex_anexo">
+                <i class="fa-solid fa-list-check w-4 text-center"></i> Anexo Guiones
+            </button>
+
+            <!-- DIGITAL SEGUNDO -->
+            <div class="px-8 mb-2 mt-8 text-[10px] font-bold text-gray-400 uppercase tracking-widest">II. Módulo Digital</div>
+            <button onclick="switchTab('perfiles')" class="nav-btn w-full flex items-center gap-4 px-8 py-3 text-sm transition-all duration-200 text-gray-500 hover:text-gray-900 hover:bg-gray-50 border-l-4 border-transparent" data-target="perfiles">
                 <i class="fa-solid fa-users w-4 text-center"></i> Perfiles y Tono
             </button>
-            <button onclick="switchTab('protocolos')" class="nav-btn w-full flex items-center gap-4 px-8 py-3.5 text-sm transition-all duration-200 text-gray-500 hover:text-gray-900 hover:bg-gray-50 border-l-4 border-transparent" data-target="protocolos">
-                <i class="fa-regular fa-comment-dots w-4 text-center"></i> Protocolos
+            <button onclick="switchTab('protocolos')" class="nav-btn w-full flex items-center gap-4 px-8 py-3 text-sm transition-all duration-200 text-gray-500 hover:text-gray-900 hover:bg-gray-50 border-l-4 border-transparent" data-target="protocolos">
+                <i class="fa-regular fa-comment-dots w-4 text-center"></i> Protocolos Canal
             </button>
-            <button onclick="switchTab('arbol')" class="nav-btn w-full flex items-center gap-4 px-8 py-3.5 text-sm transition-all duration-200 text-gray-500 hover:text-gray-900 hover:bg-gray-50 border-l-4 border-transparent" data-target="arbol">
-                <i class="fa-solid fa-sitemap w-4 text-center"></i> Árbol de Decisión
+            <button onclick="switchTab('arbol')" class="nav-btn w-full flex items-center gap-4 px-8 py-3 text-sm transition-all duration-200 text-gray-500 hover:text-gray-900 hover:bg-gray-50 border-l-4 border-transparent" data-target="arbol">
+                <i class="fa-solid fa-sitemap w-4 text-center"></i> Árbol Digital
             </button>
-            <button onclick="switchTab('simulador')" class="nav-btn w-full flex items-center gap-4 px-8 py-3.5 text-sm transition-all duration-200 text-gray-500 hover:text-gray-900 hover:bg-gray-50 border-l-4 border-transparent" data-target="simulador">
+            <button onclick="switchTab('simulador')" class="nav-btn w-full flex items-center gap-4 px-8 py-3 text-sm transition-all duration-200 text-gray-500 hover:text-gray-900 hover:bg-gray-50 border-l-4 border-transparent" data-target="simulador">
                 <i class="fa-solid fa-mobile-screen w-4 text-center"></i> Simulador IA
             </button>
         </nav>
@@ -82,24 +106,307 @@
         <!-- Mobile Header & Nav -->
         <div class="md:hidden flex flex-col shrink-0 border-b border-gray-200 bg-white z-20 shadow-sm">
             <div class="p-4 flex items-center justify-center border-b border-gray-100">
-               <h1 class="text-gray-900 text-xs font-bold tracking-[0.15em] uppercase">Productos <span class="font-light text-gray-400">Arq.</span></h1>
+               <h1 class="text-gray-900 text-xs font-bold tracking-[0.15em] uppercase">PA & <span class="font-light text-gray-500">CEDEX</span></h1>
             </div>
             <div class="flex overflow-x-auto px-4 py-3 snap-x gap-2 custom-scrollbar" id="nav-mobile">
-                <button onclick="switchTab('perfiles')" class="nav-btn-mobile snap-start shrink-0 flex items-center gap-2 px-5 py-2 rounded-full text-xs transition-colors bg-gray-100 text-gray-600 active" data-target="perfiles">Perfiles</button>
-                <button onclick="switchTab('protocolos')" class="nav-btn-mobile snap-start shrink-0 flex items-center gap-2 px-5 py-2 rounded-full text-xs transition-colors bg-gray-100 text-gray-600 border border-transparent" data-target="protocolos">Protocolos</button>
-                <button onclick="switchTab('arbol')" class="nav-btn-mobile snap-start shrink-0 flex items-center gap-2 px-5 py-2 rounded-full text-xs transition-colors bg-gray-100 text-gray-600 border border-transparent" data-target="arbol">Procesos</button>
-                <button onclick="switchTab('simulador')" class="nav-btn-mobile snap-start shrink-0 flex items-center gap-2 px-5 py-2 rounded-full text-xs transition-colors bg-gray-100 text-gray-600 border border-transparent" data-target="simulador">Simulador</button>
+                <button onclick="switchTab('cedex_obj')" class="nav-btn-mobile snap-start shrink-0 px-4 py-2 rounded-full text-xs transition-colors bg-gray-100 text-gray-600 active" data-target="cedex_obj">CEDEX: Reglas</button>
+                <button onclick="switchTab('cedex_est1')" class="nav-btn-mobile snap-start shrink-0 px-4 py-2 rounded-full text-xs transition-colors bg-gray-100 text-gray-600" data-target="cedex_est1">CEDEX: Fases</button>
+                <button onclick="switchTab('perfiles')" class="nav-btn-mobile snap-start shrink-0 px-4 py-2 rounded-full text-xs transition-colors bg-gray-100 text-gray-600" data-target="perfiles">Perfiles Digital</button>
+                <button onclick="switchTab('protocolos')" class="nav-btn-mobile snap-start shrink-0 px-4 py-2 rounded-full text-xs transition-colors bg-gray-100 text-gray-600" data-target="protocolos">Canales Digital</button>
+                <button onclick="switchTab('arbol')" class="nav-btn-mobile snap-start shrink-0 px-4 py-2 rounded-full text-xs transition-colors bg-gray-100 text-gray-600" data-target="arbol">Árbol Digital</button>
+                <button onclick="switchTab('simulador')" class="nav-btn-mobile snap-start shrink-0 px-4 py-2 rounded-full text-xs transition-colors bg-gray-100 text-gray-600" data-target="simulador">Simulador IA</button>
             </div>
         </div>
 
         <div class="flex-1 overflow-y-auto p-6 md:p-12 lg:p-16 relative z-10">
             <div class="max-w-4xl mx-auto h-full pb-20">
 
-                <!-- SECTION 1: PERFILES Y TONO -->
-                <section id="perfiles" class="tab-content active space-y-12">
+                <!-- ========================================== -->
+                <!-- PARTE I: MÓDULO PRESENCIAL CEDEX (NUEVO ORDEN) -->
+                <!-- ========================================== -->
+
+                <section id="cedex_obj" class="tab-content active space-y-8">
                     <div class="border-b border-gray-200 pb-8">
-                        <h2 class="text-3xl md:text-4xl font-light text-gray-900 tracking-tight">Perfiles & Tono</h2>
-                        <p class="text-gray-500 mt-3 text-lg font-light">Estandarización de la comunicación consultiva de lujo.</p>
+                        <span class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2 block">I. Módulo Presencial / CEDEX</span>
+                        <h2 class="text-3xl md:text-4xl font-light text-gray-900 tracking-tight">1. Objetivo del Manual</h2>
+                    </div>
+
+                    <div class="bg-white border border-gray-200 p-8 rounded-xl shadow-sm text-sm text-gray-700 leading-relaxed space-y-6">
+                        <p>Hoy el cliente llega solo a la sala, se atiende bien, se le envía cotización y ahí se pierde el seguimiento. Este proceso resuelve tres problemas puntuales:</p>
+                        <ol class="list-decimal pl-5 space-y-2 text-gray-600">
+                            <li>La cotización se envía por escrito y se enfría sin reunión de por medio.</li>
+                            <li>No hay seguimiento sistemático después de la cotización.</li>
+                            <li>Los mensajes de WhatsApp se quedan sin responder por falta de dueño claro.</li>
+                        </ol>
+                        
+                        <div class="bg-gray-900 text-white p-6 rounded-lg mt-6">
+                            <strong class="block text-lg mb-2 text-gray-300 uppercase tracking-widest text-xs">La regla que cambia todo:</strong>
+                            <span class="text-xl font-light">Se agenda primero, se cotiza después.</span>
+                            <p class="mt-2 text-gray-400 text-sm">La cita queda en el calendario antes de que exista la cotización en papel.</p>
+                        </div>
+                        <p>Este manual está organizado alrededor de los 4 estados del CRM de Cedex: Identificación, Presentación, Negociación y Cerrado. Cada sección cubre qué debe hacer el vendedor mientras el cliente está en ese estado, y qué lo hace avanzar al siguiente.</p>
+                    </div>
+                </section>
+
+                <section id="cedex_est1" class="tab-content space-y-8">
+                    <div class="border-b border-gray-200 pb-8">
+                        <span class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2 block">I. Módulo Presencial / CEDEX</span>
+                        <h2 class="text-3xl md:text-4xl font-light text-gray-900 tracking-tight">2. Estado 1 — Identificación</h2>
+                        <p class="text-gray-500 mt-3 text-lg font-light">Se abre en el momento en que el cliente llega a la sala (centro de costos: Cedex).</p>
+                    </div>
+
+                    <div class="space-y-8">
+                        <div class="bg-white border border-gray-200 p-6 rounded-xl shadow-sm">
+                            <h3 class="font-bold text-gray-900 mb-4">2.1 Registro e identificación del cliente</h3>
+                            <p class="text-sm text-gray-600 mb-4">Es obligatorio antes de iniciar la atención comercial. Se abre el registro en el sistema con estos datos:</p>
+                            <table class="w-full text-left text-sm border-collapse">
+                                <thead>
+                                    <tr class="bg-gray-50 border-b border-gray-200">
+                                        <th class="p-3 font-semibold text-gray-700">Campo</th>
+                                        <th class="p-3 font-semibold text-gray-700">Qué se registra</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100">
+                                    <tr><td class="p-3 font-medium">Nombre</td><td class="p-3 text-gray-600">Nombre del cliente.</td></tr>
+                                    <tr><td class="p-3 font-medium">Apellido</td><td class="p-3 text-gray-600">Apellido del cliente.</td></tr>
+                                    <tr><td class="p-3 font-medium">Teléfono</td><td class="p-3 text-gray-600">Número de contacto directo.</td></tr>
+                                    <tr><td class="p-3 font-medium">Cómo llegó al almacén</td><td class="p-3 text-gray-600">Origen del cliente: referido, redes sociales, pauta publicitaria, pasó por el lugar, etc.</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="bg-white border border-gray-200 p-6 rounded-xl shadow-sm space-y-4 text-sm text-gray-700">
+                            <h3 class="font-bold text-gray-900 text-lg border-b border-gray-100 pb-2">2.4 Regla de segmentación</h3>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="bg-gray-50 p-4 rounded border border-gray-200">
+                                    <strong class="text-gray-900 block mb-2">Proyecto</strong>
+                                    <span class="text-xs text-gray-500 block mb-2">(baño completo, cocina completa, o combinación)</span>
+                                    No se envía cotización por chat. Se agenda, para el <strong>día 3</strong>, una visita presencial o una videoconferencia por Teams.
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded border border-gray-200">
+                                    <strong class="text-gray-900 block mb-2">Producto individual</strong>
+                                    <span class="text-xs text-gray-500 block mb-2">(una ducha, un sanitario suelto, una grifería)</span>
+                                    Se envía la cotización directamente, sin necesidad de agendar reunión.
+                                </div>
+                            </div>
+                            
+                            <div class="mt-6">
+                                <strong class="block text-gray-800 mb-2">2.5 Guión para agendar la presentación (solo proyectos)</strong>
+                                <p class="italic text-gray-600 border-l-4 border-gray-300 pl-4 py-1">“Con lo que hemos conversado ya tengo claro lo que usted necesita. Prefiero no enviarle números fríos por WhatsApp — le preparo la propuesta completa con las opciones de [línea de producto] y se la explico yo mismo, así resolvemos cualquier duda en el momento. Le agendo para el jueves (día 3); ¿prefiere que sea aquí en la sala o por una videollamada de Teams?”</p>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <strong class="block text-gray-800 mb-2">2.6 Si el cliente insiste en “envíenmela no más” (proyectos)</strong>
+                                <p class="italic text-gray-600 border-l-4 border-gray-300 pl-4 py-1">“Con todo gusto se la envío, aunque las propuestas de [griferías/porcelanato/cocinas] suelen tener varias combinaciones, y prefiero acompañarlo en 10 minutos por videollamada para que no tenga que comparar solo. ¿Tiene 15 minutos el viernes a las 4pm?”</p>
+                            </div>
+
+                            <div class="mt-4 p-4 bg-gray-100 rounded text-sm">
+                                <strong class="text-gray-900 block mb-2">2.7 Regla interna de backlog (proyectos)</strong>
+                                <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                                    <li>Cotización = cita agendada para el día 3. Sin cita, la solicitud queda como “pendiente de agendar”, no entra a la cola de cotización.</li>
+                                    <li>La fecha de la cita (día 3) es el plazo límite real para tener la cotización lista.</li>
+                                    <li>Bloque fijo de agenda diario (sugerido 4–5pm) dedicado solo a armar cotizaciones pendientes.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-900 text-white border border-gray-800 p-6 rounded-xl text-sm">
+                            <h3 class="font-bold text-gray-100 mb-2 border-b border-gray-700 pb-2">2.8 Variable 1 — El cliente de un proyecto no quiere reunirse</h3>
+                            <p class="mb-2 text-gray-300"><strong>Contexto:</strong> Es un proyecto, pero el cliente insiste en no reunirse incluso después del guión de refuerzo.</p>
+                            <p class="mb-4 text-gray-300"><strong>Acción:</strong> Se envía la cotización igual para no perderlo. Se registra en CRM. Pasa a Presentación como "enviado sin reunión". Los mensajes de seguimiento cambian (no pueden mencionar “nos vemos”).</p>
+                            <div class="bg-gray-800 p-4 rounded text-gray-300 space-y-3">
+                                <strong>Plantillas adaptadas (sin reunión):</strong>
+                                <p><strong>Día 1:</strong> “Espero que la propuesta de [producto] que le hice llegar haya sido de su agrado. Cualquier duda que tenga, con gusto la resolvemos ahora mismo.”</p>
+                                <p><strong>Día 3:</strong> “Quería confirmar que recibió la propuesta de [producto]. ¿Le parece si le llamo en 3 días para conversar sobre cualquier duda que le haya quedado?”</p>
+                                <p><strong>Día 7:</strong> “Le cuento que [dato real: stock limitado / condición]. Quise que lo supiera por si aún lo está considerando.”</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="cedex_est2" class="tab-content space-y-8">
+                    <div class="border-b border-gray-200 pb-8">
+                        <span class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2 block">I. Módulo Presencial / CEDEX</span>
+                        <h2 class="text-3xl md:text-4xl font-light text-gray-900 tracking-tight">3. Estado 2 — Presentación</h2>
+                    </div>
+                    <div class="bg-white border border-gray-200 p-8 rounded-xl shadow-sm text-sm text-gray-700 space-y-4">
+                        <p>Comienza cuando llega la fecha agendada (o el mismo día, si se cotizó en tiempo real o se envió directo). Termina cuando el cliente ha visto la propuesta y el vendedor deja registrado el resultado.</p>
+                        <ul class="list-disc pl-5 space-y-4 text-gray-600 mt-4">
+                            <li><strong>3.1 Reunión de presentación:</strong> Aplica a los proyectos agendados para el día 3. La cotización <strong>nunca se envía antes de la reunión</strong>. Se presenta en vivo, presencial o por Teams, y se entrega el documento al final del encuentro. Si viene con arquitecto o diseñador, ambos deben estar presentes.</li>
+                            <li><strong>3.2 Subir la cotización:</strong> El día de la presentación (o al momento de cotizar en tiempo real), la cotización se sube al cotizador — es el registro oficial.</li>
+                            <li><strong>3.3 Registrar resultado:</strong> Se escribe en el CRM el resultado de la presentación: cómo reaccionó el cliente, qué dudas o ajustes pidió.</li>
+                            <li><strong>3.4 Agendar próximo contacto:</strong> Como en todos los estados, no se cierra la presentación sin dejar agendado el próximo contacto con el cliente. Con esto, pasa a Negociación.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="cedex_est3" class="tab-content space-y-8">
+                    <div class="border-b border-gray-200 pb-8">
+                        <span class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2 block">I. Módulo Presencial / CEDEX</span>
+                        <h2 class="text-3xl md:text-4xl font-light text-gray-900 tracking-tight">4. Estado 3 — Negociación</h2>
+                        <p class="text-gray-500 mt-3 text-lg font-light">Cubre todo el seguimiento. Regla fija: siempre debe quedar una reunión o llamada agendada después de cada contacto.</p>
+                    </div>
+
+                    <div class="space-y-8">
+                        <div class="overflow-x-auto bg-white border border-gray-200 rounded-xl shadow-sm">
+                            <h3 class="font-bold text-gray-900 p-4 border-b border-gray-100">4.1 Ciclo de seguimiento (4 puntos obligatorios)</h3>
+                            <table class="w-full text-left text-sm">
+                                <thead>
+                                    <tr class="bg-gray-50 text-gray-500 uppercase text-xs tracking-wider">
+                                        <th class="p-4 border-b border-gray-200">Día</th>
+                                        <th class="p-4 border-b border-gray-200">Canal</th>
+                                        <th class="p-4 border-b border-gray-200">Objetivo</th>
+                                        <th class="p-4 border-b border-gray-200">Mensaje / Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100 text-gray-700">
+                                    <tr>
+                                        <td class="p-4 font-semibold text-gray-900 whitespace-nowrap">Día 1</td>
+                                        <td class="p-4">WhatsApp</td>
+                                        <td class="p-4">Confirmar y cerrar el círculo de la reunión, sin vender todavía.</td>
+                                        <td class="p-4 italic">“Fue un gusto atenderle ayer. Le confirmo que quedamos en [fecha] para revisar la propuesta de [línea]. Cualquier cosa que necesite antes, quedo a su disposición.”</td>
+                                    </tr>
+                                    <tr class="bg-gray-50">
+                                        <td class="p-4 font-semibold text-gray-900 whitespace-nowrap">Día 3</td>
+                                        <td class="p-4">Llamada / Audio</td>
+                                        <td class="p-4">Sonar humano, resolver dudas nuevas antes de la reunión de cierre.</td>
+                                        <td class="p-4 italic">“Quería confirmarle que ya estoy preparando su propuesta de [producto], que incluirá [detalle]. Nos vemos [día de la cita] como quedamos.”</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4 font-semibold text-gray-900 whitespace-nowrap">Día 7</td>
+                                        <td class="p-4">WhatsApp</td>
+                                        <td class="p-4">Dar una razón real para no postergar, sin presionar.</td>
+                                        <td class="p-4 italic">“Le cuento que [dato real: stock limitado / condición especial este mes]. Quise que lo supiera antes de nuestra reunión del [fecha].”</td>
+                                    </tr>
+                                    <tr class="bg-gray-50">
+                                        <td class="p-4 font-semibold text-gray-900 whitespace-nowrap">Día 14</td>
+                                        <td class="p-4">Llamada / WA</td>
+                                        <td class="p-4">Cerrar el ciclo: avanzar o soltar, sin perseguir indefinidamente.</td>
+                                        <td class="p-4 italic">“No he tenido noticias suyas desde que revisamos la propuesta. Si ya no es el momento no hay ningún inconveniente, solo avíseme para no seguir insistiendo. Si sigue en pie, con gusto ajustamos lo que necesite.”</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="bg-white border border-gray-200 p-8 rounded-xl shadow-sm text-sm text-gray-700">
+                            <h3 class="font-bold text-gray-900 text-lg mb-4">4.2 Día 3 en detalle — generar un compromiso</h3>
+                            <p class="mb-4 text-gray-600">Este “día 3” se cuenta desde la presentación, no desde la visita en sala. Se busca cerrar un compromiso concreto: <strong>“¿Le parece si lo llamo en 3 días para ver qué necesita?”</strong> Según la respuesta:</p>
+                            
+                            <div class="grid md:grid-cols-2 gap-6 mt-6">
+                                <div class="border-l-4 border-gray-400 pl-4 py-2 bg-gray-50">
+                                    <strong class="block text-gray-900 mb-2">Ruta A — El cliente dice “no me llame”</strong>
+                                    <ul class="space-y-2 text-gray-600">
+                                        <li><strong>Día 5:</strong> Enviar WhatsApp: <em>“Seguimos a su disposición para lo que necesite.”</em></li>
+                                        <li><strong>Si contesta:</strong> Agendar cita o nutrir el CRM.</li>
+                                        <li><strong>Si no contesta:</strong> Nuevo recordatorio a los 15 días: <em>“Seguimos muy pendientes de usted.”</em></li>
+                                    </ul>
+                                </div>
+                                <div class="border-l-4 border-gray-800 pl-4 py-2 bg-gray-100">
+                                    <strong class="block text-gray-900 mb-2">Ruta B — El cliente dice “sí, llámeme”</strong>
+                                    <ul class="space-y-2 text-gray-600">
+                                        <li><strong>Fecha comprometida:</strong> Cumplir la cita telefónica y registrar en CRM el compromiso acordado.</li>
+                                        <li><strong>Si no contesta:</strong> Al día siguiente, WA: <em>“Seguimos atentos a lo que usted necesite.”</em></li>
+                                        <li><strong>Si no contesta ese mensaje:</strong> Llamar por teléfono, preguntar qué puede ayudarle y generar un nuevo compromiso.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white border border-gray-200 p-6 rounded-xl shadow-sm text-sm text-gray-700">
+                            <h3 class="font-bold text-gray-900 mb-2">4.3 Cuando hay arquitecto o diseñador de por medio</h3>
+                            <p class="mb-2">Las mismas cuatro plantillas se envían a las dos personas, el mismo día, pero con enfoque distinto:</p>
+                            <ul class="list-disc pl-5 space-y-1 mb-4 text-gray-600">
+                                <li><strong>Al cliente:</strong> Mismo tono personal de la tabla anterior.</li>
+                                <li><strong>Al arquitecto/diseñador:</strong> Enfoque técnico (especificaciones, fichas). Él no necesita que le vendan, necesita defender la propuesta.</li>
+                            </ul>
+                            <div class="p-3 bg-gray-50 border border-gray-100 rounded italic text-gray-600">
+                                Ejemplo Día 3 al arquitecto: “Hola [Nombre], le comparto que ya estoy preparando la propuesta para [Cliente]. Cualquier ajuste técnico o de especificación que necesite antes de la reunión, con gusto lo incluyo — quedo atento.”
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+                
+                <section id="cedex_est4" class="tab-content space-y-8">
+                    <div class="border-b border-gray-200 pb-8">
+                        <span class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2 block">I. Módulo Presencial / CEDEX</span>
+                        <h2 class="text-3xl md:text-4xl font-light text-gray-900 tracking-tight">5. Estado 4 — Cerrado & Regla Transversal</h2>
+                    </div>
+                    
+                    <div class="bg-white border border-gray-200 p-6 rounded-xl shadow-sm text-sm text-gray-700 space-y-6">
+                        <div>
+                            <h3 class="font-bold text-gray-900 mb-2">Estado Final del Proyecto</h3>
+                            <p class="mb-2">Se llega aquí desde Negociación, en uno de dos resultados:</p>
+                            <div class="grid md:grid-cols-2 gap-4 mt-3">
+                                <div class="bg-gray-50 p-4 border border-gray-100 rounded">
+                                    <strong class="text-green-700 block mb-1">5.1 Ganado</strong>
+                                    <p>El cliente confirma la compra. Se registra en el CRM como Ganado, con la fecha real de cierre.</p>
+                                </div>
+                                <div class="bg-gray-50 p-4 border border-gray-100 rounded">
+                                    <strong class="text-red-700 block mb-1">5.2 Perdido</strong>
+                                    <p>El cliente no avanza, o deja de responder después del día 14. Se registra como Perdido. <strong>No se descarta al cliente:</strong> pasa a una lista de nutrición con contacto trimestral.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-900 text-white p-6 rounded-xl mt-6">
+                            <h3 class="font-bold text-gray-200 mb-2 border-b border-gray-700 pb-2">4.4 Regla transversal — WhatsApp sin respuesta</h3>
+                            <p class="text-gray-300">Cada conversación de WhatsApp queda asignada a un vendedor específico en el CRM el mismo día que entra, con un <strong>SLA de respuesta de 2 horas hábiles</strong>. Sin dueño claro, nadie responde.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="cedex_anexo" class="tab-content space-y-8">
+                    <div class="border-b border-gray-200 pb-8">
+                        <span class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2 block">I. Módulo Presencial / CEDEX</span>
+                        <h2 class="text-3xl md:text-4xl font-light text-gray-900 tracking-tight">Anexo — Mensajes por línea de negocio</h2>
+                        <p class="text-gray-500 mt-3 text-sm font-light">El mismo camino (proyecto vs. individual) aplica a las cuatro líneas. Lo único que cambia es el producto mencionado en el mensaje de apertura.</p>
+                    </div>
+                    
+                    <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden text-sm">
+                        <table class="w-full text-left">
+                            <thead class="bg-gray-50 border-b border-gray-200">
+                                <tr class="text-gray-500 uppercase text-xs tracking-wider">
+                                    <th class="p-4">Línea</th>
+                                    <th class="p-4">Proyecto (Guión agendar Día 3)</th>
+                                    <th class="p-4">Individual (Confirma Día 1)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100 text-gray-700">
+                                <tr>
+                                    <td class="p-4 font-semibold whitespace-nowrap">Baños</td>
+                                    <td class="p-4 italic">“...le preparo la propuesta completa de su baño, con las opciones de grifería, sanitario y tina, y se la explico yo mismo...”</td>
+                                    <td class="p-4 italic">“Espero que la propuesta de su ducha, sanitario o grifería que le hice llegar haya sido de su agrado...”</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="p-4 font-semibold whitespace-nowrap">Porcelanatos</td>
+                                    <td class="p-4 italic">“...le preparo la propuesta completa de revestimiento para el ambiente, con las opciones de Mirage que conversamos...”</td>
+                                    <td class="p-4 italic">“Espero que la propuesta del porcelanato que le hice llegar haya sido de su agrado...”</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 font-semibold whitespace-nowrap">Cocinas</td>
+                                    <td class="p-4 italic">“...le preparo la propuesta completa de su cocina, con el diseño y los acabados de Nolte que revisamos...”</td>
+                                    <td class="p-4 italic">“Espero que la propuesta de su mueble o electrodoméstico que le hice llegar haya sido de su agrado...”</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="p-4 font-semibold whitespace-nowrap">Muebles</td>
+                                    <td class="p-4 italic">“...le preparo la propuesta completa de su ambientación, con las piezas de Poliform que le gustaron...”</td>
+                                    <td class="p-4 italic">“Espero que la propuesta de su pieza de mobiliario que le hice llegar haya sido de su agrado...”</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- ========================================== -->
+                <!-- PARTE II: MÓDULO DIGITAL  (RESTAURADO)     -->
+                <!-- ========================================== -->
+
+                <section id="perfiles" class="tab-content space-y-12">
+                    <div class="border-b border-gray-200 pb-8">
+                        <span class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2 block">II. Módulo Digital</span>
+                        <h2 class="text-3xl md:text-4xl font-light text-gray-900 tracking-tight">Perfiles & Tono Digital</h2>
+                        <p class="text-gray-500 mt-3 text-lg font-light">Estandarización de la comunicación consultiva de lujo en canales digitales.</p>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -107,65 +414,68 @@
                             <h3 class="text-xl font-semibold text-gray-900 mb-1">B2B (Profesional)</h3>
                             <p class="text-gray-400 text-xs font-semibold tracking-widest uppercase mb-6">Arquitectos / Constructoras</p>
                             <ul class="space-y-4 text-sm text-gray-600">
-                                <li class="flex gap-3"><i class="fa-solid fa-arrow-right text-gray-300 mt-1"></i><span><strong>Mentalidad:</strong> Buscan un aliado estratégico. Valoran la eficiencia, la viabilidad técnica y las garantías.</span></li>
-                                <li class="flex gap-3"><i class="fa-solid fa-arrow-right text-gray-300 mt-1"></i><span><strong>Acción Comercial:</strong> Envío inmediato de fichas técnicas, librerías BIM/CAD y renders de especificación del producto.</span></li>
+                                <li class="flex gap-3"><i class="fa-solid fa-arrow-right text-gray-300 mt-1"></i><span><strong>Mentalidad:</strong> Buscan un aliado estratégico. Valoran la eficiencia, la viabilidad técnica y las garantías institucionales.</span></li>
+                                <li class="flex gap-3"><i class="fa-solid fa-arrow-right text-gray-300 mt-1"></i><span><strong>Acción Digital:</strong> Envío inmediato de fichas técnicas, librerías BIM/CAD y renders de especificación. Hablar de rentabilidad y tiempos de obra.</span></li>
+                                <li class="flex gap-3"><i class="fa-solid fa-arrow-right text-gray-300 mt-1"></i><span><strong>Marcas Foco:</strong> Mirage, Hansgrohe, Laufen, Axor.</span></li>
                             </ul>
                         </div>
                         <div class="bg-gray-900 text-white rounded-xl p-8 shadow-sm">
                             <h3 class="text-xl font-semibold text-white mb-1">B2C (Cliente Final)</h3>
                             <p class="text-gray-400 text-xs font-semibold tracking-widest uppercase mb-6">Propietarios / Remodelaciones</p>
                             <ul class="space-y-4 text-sm text-gray-300">
-                                <li class="flex gap-3"><i class="fa-solid fa-arrow-right text-gray-600 mt-1"></i><span><strong>Mentalidad:</strong> Buscan inspiración y estatus. Compran el "sueño" de un espacio de diseño premium (Ej: Cocinas Nolte).</span></li>
-                                <li class="flex gap-3"><i class="fa-solid fa-arrow-right text-gray-600 mt-1"></i><span><strong>Acción Comercial:</strong> Venta consultiva. El objetivo principal es enamorarlos e invitarlos al showroom físico.</span></li>
+                                <li class="flex gap-3"><i class="fa-solid fa-arrow-right text-gray-600 mt-1"></i><span><strong>Mentalidad:</strong> Buscan inspiración y estatus. Compran el "sueño" de un espacio de diseño premium (Ej: Cocinas Nolte, clósets Poliform).</span></li>
+                                <li class="flex gap-3"><i class="fa-solid fa-arrow-right text-gray-600 mt-1"></i><span><strong>Acción Digital:</strong> Venta consultiva. El objetivo principal del canal digital es enamorarlos e <strong>invitarlos al showroom físico (CEDEX)</strong>.</span></li>
+                                <li class="flex gap-3"><i class="fa-solid fa-arrow-right text-gray-600 mt-1"></i><span><strong>Marcas Foco:</strong> Poliform, Nolte, Roca Ona/Infinity.</span></li>
                             </ul>
                         </div>
                     </div>
 
                     <div class="border border-gray-200 bg-white rounded-xl p-8 shadow-sm">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-4 uppercase tracking-widest text-xs">Directrices de Tono</h3>
-                        <p class="text-gray-600 text-sm mb-8 leading-relaxed">Nuestra comunicación es <strong>sofisticada, consultiva, experta y concisa</strong>. Evitamos la insistencia. Educamos e inspiramos mediante la excelencia del diseño europeo.</p>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4 uppercase tracking-widest text-xs">Directrices Específicas de Tono Digital</h3>
+                        <p class="text-gray-600 text-sm mb-8 leading-relaxed">Nuestra comunicación en WhatsApp y Redes Sociales es <strong>sofisticada, consultiva, experta y concisa</strong>. Evitamos la insistencia. Educamos e inspiramos.</p>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
                             <div class="border-l border-gray-200 pl-6">
                                 <strong class="text-gray-900 block mb-3 font-semibold">El Estándar PA</strong>
                                 <ul class="text-gray-600 space-y-3">
-                                    <li>Trato de "Tú" respetuoso y profesional.</li>
-                                    <li>Mensajes cortos, estilo WhatsApp.</li>
-                                    <li>Cerrar interacciones guiando el siguiente paso (Ej: "¿Te envío el catálogo o prefieres agendar cita?").</li>
+                                    <li>• Trato de "Tú" respetuoso y profesional (sin tuteo excesivo de confianza).</li>
+                                    <li>• Mensajes cortos, máximo 2 oraciones por globo de chat.</li>
+                                    <li>• Cerrar interacciones siempre con una pregunta que guíe al siguiente paso (Ej: "¿Prefieres agendar cita en sala o revisamos la ficha técnica?").</li>
                                 </ul>
                             </div>
                             <div class="border-l border-gray-200 pl-6">
                                 <strong class="text-gray-900 block mb-3 font-semibold">Lo Inaceptable</strong>
                                 <ul class="text-gray-600 space-y-3">
-                                    <li>Párrafos extensos o catálogos sin contexto.</li>
-                                    <li>Entregar precios sin hablar de la propuesta de valor.</li>
-                                    <li>Uso de diminutivos o lenguaje promocional agresivo.</li>
+                                    <li>• Párrafos extensos o envío de catálogos en PDF pesados sin contexto previo.</li>
+                                    <li>• Entregar cotizaciones de proyectos completos por chat (Aplicar regla CEDEX siempre).</li>
+                                    <li>• Uso de diminutivos ("vengase", "rápido", "baratito") o lenguaje promocional agresivo.</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- SECTION 2: PROTOCOLOS POR CANAL -->
                 <section id="protocolos" class="tab-content space-y-12">
                     <div class="border-b border-gray-200 pb-8">
-                        <h2 class="text-3xl md:text-4xl font-light text-gray-900 tracking-tight">Protocolos Operativos</h2>
-                        <p class="text-gray-500 mt-3 text-lg font-light">Gestión por canal para maximizar la conversión.</p>
+                        <span class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2 block">II. Módulo Digital</span>
+                        <h2 class="text-3xl md:text-4xl font-light text-gray-900 tracking-tight">Protocolos Operativos por Canal</h2>
+                        <p class="text-gray-500 mt-3 text-lg font-light">SLA y gestión específica por canal para maximizar la conversión inicial.</p>
                     </div>
-
+                    
                     <div class="space-y-4">
                         <div class="bg-white border border-gray-200 p-8 rounded-xl flex flex-col md:flex-row gap-8 shadow-sm">
                             <div class="w-12 h-12 bg-gray-50 border border-gray-100 text-gray-800 rounded-full flex items-center justify-center shrink-0">
                                 <i class="fa-brands fa-whatsapp text-xl"></i>
                             </div>
                             <div>
-                                <h3 class="text-lg font-semibold text-gray-900 mb-3">WhatsApp</h3>
+                                <h3 class="text-lg font-semibold text-gray-900 mb-3">WhatsApp Oficial</h3>
                                 <div class="space-y-4 text-sm text-gray-600 leading-relaxed">
-                                    <p><strong>Reglas de Enrutamiento:</strong></p>
-                                    <ul class="list-disc pl-5 space-y-1">
-                                        <li>Cualificar en el primer contacto: "¿El proyecto es personal o eres profesional del sector?".</li>
-                                        <li>Si piden griferías/sanitarios para <strong>proyectos/volumen</strong>: Enrutar catálogo <em>Hansgrohe</em>.</li>
-                                        <li>Si buscan <strong>lujo residencial/diseño exclusivo</strong>: Enrutar catálogo <em>Axor</em> o <em>Gessi</em>.</li>
+                                    <p><strong>Reglas Específicas de Enrutamiento:</strong></p>
+                                    <ul class="list-disc pl-5 space-y-2">
+                                        <li><strong>Cualificación en el primer minuto:</strong> Obligatorio preguntar: <em>"Para orientarte con la línea correcta, ¿tu proyecto es residencial propio o eres profesional de la construcción?"</em>.</li>
+                                        <li><strong>Piezas sueltas vs Proyecto:</strong> Si piden un lavamanos o grifería suelta, enviar enlace directo a <strong>p-aonline.com</strong> para cierre inmediato por e-commerce.</li>
+                                        <li><strong>Volumen Institucional:</strong> Derivar automáticamente a la línea <em>Hansgrohe</em> o <em>Roca</em>.</li>
+                                        <li><strong>Lujo Residencial B2C:</strong> Hablar de <em>Axor, Gessi, Poliform o Nolte</em> y buscar agendar cita presencial (CEDEX).</li>
                                     </ul>
                                 </div>
                             </div>
@@ -176,13 +486,13 @@
                                 <i class="fa-brands fa-instagram text-xl"></i>
                             </div>
                             <div>
-                                <h3 class="text-lg font-semibold text-gray-900 mb-3">Pauta Digital (Meta Ads)</h3>
+                                <h3 class="text-lg font-semibold text-gray-900 mb-3">Pauta Digital (Meta Ads / Instagram)</h3>
                                 <div class="space-y-4 text-sm text-gray-600 leading-relaxed">
                                     <p><strong>Gestión de Campañas de Captación:</strong></p>
-                                    <ul class="list-disc pl-5 space-y-1">
-                                        <li>SLA de respuesta: Menor a 15 minutos.</li>
-                                        <li>Campañas masivas (Baños/Sanitarios): Derivar inmediatamente a líneas ancla como <em>Roca Ona</em> e <em>Infinity</em> para asegurar interés inicial.</li>
-                                        <li>Objetivo: Trasladar el lead a WhatsApp ofreciendo material técnico exclusivo.</li>
+                                    <ul class="list-disc pl-5 space-y-2">
+                                        <li><strong>SLA de respuesta obligatoria:</strong> Menor a <strong>15 minutos</strong> dentro de horario laboral.</li>
+                                        <li><strong>Campañas masivas (Baños/Sanitarios):</strong> Derivar inmediatamente a líneas ancla como <em>Roca Ona</em> e <em>Infinity</em> para asegurar interés inicial y no asustar con ticket alto.</li>
+                                        <li><strong>Regla de Transición:</strong> El DM (Mensaje Directo) no es para cotizar. El único objetivo del DM es decir: <em>"Te comparto el lookbook completo de esta colección, ¿a qué número de WhatsApp te lo envío?"</em>.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -195,10 +505,10 @@
                             <div>
                                 <h3 class="text-lg font-semibold text-gray-900 mb-3">Correo Electrónico (B2B)</h3>
                                 <div class="space-y-4 text-sm text-gray-600 leading-relaxed">
-                                    <p><strong>Cotizaciones y Especificación:</strong></p>
-                                    <ul class="list-disc pl-5 space-y-1">
-                                        <li>Toda cotización formal debe ir acompañada de renders de presentación de los productos principales (lavamanos, griferías, mobiliario).</li>
-                                        <li>El correo B2B facilita la visualización del cliente final del arquitecto.</li>
+                                    <p><strong>Estandarización de Especificación:</strong></p>
+                                    <ul class="list-disc pl-5 space-y-2">
+                                        <li>Toda cotización formal enviada por correo debe ir acompañada de renders de presentación de los productos. No enviar solo Excel.</li>
+                                        <li>Asunto estandarizado: <em>[Propuesta Comercial PA] - Nombre del Proyecto - Marca principal</em>.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -206,12 +516,12 @@
                     </div>
                 </section>
 
-                <!-- SECTION 3: ÁRBOL DE DECISIÓN -->
                 <section id="arbol" class="tab-content space-y-8">
                     <div class="border-b border-gray-200 pb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
                         <div>
-                            <h2 class="text-3xl md:text-4xl font-light text-gray-900 tracking-tight">Árbol de Decisión</h2>
-                            <p class="text-gray-500 mt-3 text-lg font-light">Estructura detallada de objeciones y cierres.</p>
+                            <span class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2 block">II. Módulo Digital</span>
+                            <h2 class="text-3xl md:text-4xl font-light text-gray-900 tracking-tight">Árbol de Decisión Inicial</h2>
+                            <p class="text-gray-500 mt-3 text-lg font-light">Estructura detallada de objeciones y cierres en la fase digital (antes de ingresar al CRM presencial).</p>
                         </div>
                         <button onclick="resetTree()" class="text-gray-500 hover:text-gray-900 border border-gray-300 px-4 py-2.5 rounded-lg text-sm bg-white shadow-sm font-medium transition-colors">
                             <i class="fa-solid fa-rotate-left mr-2"></i>Reiniciar
@@ -221,20 +531,20 @@
                     <!-- Step 1: Origen -->
                     <div class="bg-white border border-gray-200 p-8 rounded-xl shadow-sm">
                         <h3 class="text-gray-900 font-semibold mb-6 flex items-center gap-3">
-                            <span class="bg-gray-100 text-gray-800 border border-gray-200 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span> Origen del Contacto
+                            <span class="bg-gray-100 text-gray-800 border border-gray-200 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span> Origen del Contacto Digital
                         </h3>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <button onclick="selectOrigin('pauta', this)" class="btn-origin p-5 rounded-lg border border-gray-200 bg-gray-50 text-left hover:border-gray-900 transition-colors">
                                 <div class="font-semibold text-gray-900">Pauta Digital</div>
-                                <div class="text-xs text-gray-500 mt-1">Buscan producto específico.</div>
+                                <div class="text-xs text-gray-500 mt-1">Llegan por un anuncio específico (Ads).</div>
                             </button>
                             <button onclick="selectOrigin('organico', this)" class="btn-origin p-5 rounded-lg border border-gray-200 bg-gray-50 text-left hover:border-gray-900 transition-colors">
                                 <div class="font-semibold text-gray-900">Orgánico</div>
-                                <div class="text-xs text-gray-500 mt-1">Explorando marcas/diseño.</div>
+                                <div class="text-xs text-gray-500 mt-1">Nos encontraron en Google / IG Profile.</div>
                             </button>
                             <button onclick="selectOrigin('actual', this)" class="btn-origin p-5 rounded-lg border border-gray-200 bg-gray-50 text-left hover:border-gray-900 transition-colors">
                                 <div class="font-semibold text-gray-900">Cliente Actual</div>
-                                <div class="text-xs text-gray-500 mt-1">Buscan servicio VIP y rapidez.</div>
+                                <div class="text-xs text-gray-500 mt-1">Ya compraron, buscan soporte o ampliación.</div>
                             </button>
                         </div>
                     </div>
@@ -246,10 +556,10 @@
                         </h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <button onclick="selectType('b2b', this)" class="btn-type p-5 rounded-lg border border-gray-200 bg-gray-50 text-left hover:border-gray-900 transition-colors">
-                                <div class="font-semibold text-gray-900">B2B (Arquitectos / Obra)</div>
+                                <div class="font-semibold text-gray-900">B2B (Arquitectos / Constructoras)</div>
                             </button>
                             <button onclick="selectType('b2c', this)" class="btn-type p-5 rounded-lg border border-gray-200 bg-gray-50 text-left hover:border-gray-900 transition-colors">
-                                <div class="font-semibold text-gray-900">B2C (Cliente Final)</div>
+                                <div class="font-semibold text-gray-900">B2C (Cliente Final / Propietario)</div>
                             </button>
                         </div>
                     </div>
@@ -263,59 +573,48 @@
                     </div>
                 </section>
 
-                <!-- SECTION 4: SIMULADOR IA -->
-                <section id="simulador" class="tab-content h-[75vh] flex flex-col">
-                    <div class="border-b border-gray-200 pb-6 flex flex-col md:flex-row justify-between items-start md:items-end gap-4 shrink-0">
-                        <div>
-                            <h2 class="text-3xl md:text-4xl font-light text-gray-900 tracking-tight">Simulador de Chat</h2>
-                            <p class="text-gray-500 mt-2 text-sm font-light">Practica respuestas rápidas de WhatsApp usando el tono de la marca.</p>
-                        </div>
-                        <button onclick="resetChat()" class="text-gray-500 hover:text-gray-900 border border-gray-300 px-4 py-2.5 rounded-lg text-sm bg-white shadow-sm font-medium transition-colors">
-                            <i class="fa-solid fa-broom mr-2"></i>Limpiar
-                        </button>
+                <section id="simulador" class="tab-content h-[80vh] flex flex-col">
+                    <div class="border-b border-gray-200 pb-6 shrink-0">
+                        <span class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2 block">II. Módulo Digital</span>
+                        <h2 class="text-3xl font-light text-gray-900 tracking-tight">Simulador IA: Filtro Digital</h2>
+                        <p class="text-gray-500 mt-2 text-sm">Entrena las respuestas del <strong>primer contacto en WhatsApp</strong>. La IA está programada para filtrar ventas de p-aonline.com o aplicar la Regla CEDEX (agendar cita) si detecta un proyecto.</p>
                     </div>
 
                     <div class="flex-1 min-h-0 bg-white border border-gray-200 rounded-xl mt-6 flex flex-col overflow-hidden shadow-sm">
                         <div class="bg-gray-50 border-b border-gray-200 p-4 shrink-0 flex flex-col gap-3">
-                            <div class="flex items-center gap-4">
-                                <div class="w-10 h-10 bg-white border border-gray-200 rounded-full flex items-center justify-center relative shadow-sm">
-                                    <i class="fa-solid fa-mobile-screen text-gray-700"></i>
-                                    <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-gray-900 border-2 border-white rounded-full"></span>
-                                </div>
-                                <div>
-                                    <h4 class="text-gray-900 font-semibold leading-tight text-sm">Asesor PA (IA)</h4>
-                                    <p class="text-gray-500 text-xs">Modo WhatsApp (Respuestas cortas)</p>
-                                </div>
-                            </div>
-                            <input type="password" id="api-key-input" placeholder="Gemini API Key (Para uso externo / Vercel)" class="w-full bg-white border border-gray-200 px-3 py-2 text-xs rounded text-gray-600 focus:outline-none focus:border-gray-400">
+                            <input type="password" id="simKey" placeholder="Gemini API Key (Requerida para la IA)" class="w-full bg-white border border-gray-300 p-2 text-xs rounded focus:outline-none focus:border-gray-900">
+                            <input type="text" id="simInventory" placeholder="Stock Inmediato (Ej: Roca Ona, Grifería Focus)" class="w-full bg-white border border-gray-300 p-2 text-xs rounded focus:outline-none focus:border-gray-900">
                         </div>
 
-                        <div id="chat-window" class="flex-1 overflow-y-auto p-6 space-y-6 bg-gray-50/50 custom-scrollbar">
+                        <div id="chatBox" class="flex-1 overflow-y-auto p-6 space-y-4 bg-white">
                             <div class="flex justify-start">
-                                <div class="max-w-[85%] md:max-w-[70%] rounded-2xl rounded-tl-sm p-4 text-sm leading-relaxed bg-white text-gray-800 border border-gray-200 shadow-sm">
-                                    ¡Hola! Soy el simulador. Escríbeme objeciones reales de clientes (ej. "Tardan mucho", "Poliform es muy caro", "Quiero un lavamanos") y te mostraré cómo respondería un asesor ideal por WhatsApp.
+                                <div class="max-w-[80%] rounded-2xl rounded-tl-sm p-3 text-sm bg-gray-100 text-gray-800 shadow-sm border border-gray-200">
+                                    Soy el Filtro Digital. Si me pides una pieza suelta, te mandaré el link. Si me pides un baño o cocina completa, aplicaré la regla CEDEX para agendarte una cita. ¡Prueba!
                                 </div>
                             </div>
                         </div>
 
-                        <form id="chat-form" onsubmit="handleChatSubmit(event)" class="bg-white p-4 border-t border-gray-200 flex gap-3 shrink-0 items-center">
-                            <input type="text" id="chat-input" autocomplete="off" placeholder="Escribe tu mensaje como cliente..." class="flex-1 bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-full px-5 py-3.5 focus:outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-shadow">
-                            <button type="submit" id="chat-submit" class="w-12 h-12 bg-gray-900 text-white rounded-full flex items-center justify-center hover:bg-black transition-colors disabled:opacity-50 shrink-0">
-                                <i class="fa-solid fa-paper-plane text-sm transform -translate-x-0.5"></i>
-                            </button>
-                        </form>
+                        <div class="p-3 bg-gray-50 border-t border-gray-200 flex gap-2 shrink-0">
+                            <input type="text" id="chatInput" placeholder="Escribe como si fueras un cliente..." class="flex-1 p-2 text-sm border border-gray-300 rounded focus:outline-none focus:border-gray-900">
+                            <button id="sendBtn" class="bg-gray-900 text-white px-4 rounded text-sm font-medium hover:bg-black">Enviar</button>
+                        </div>
                     </div>
                 </section>
+
             </div>
         </div>
     </main>
 
     <script>
-        // --- NAVIGATION LOGIC ---
+        // --- NAVEGACIÓN ---
         function switchTab(tabId) {
+            // Ocultar todas las secciones
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
+            // Mostrar la seleccionada
+            const target = document.getElementById(tabId);
+            if(target) target.classList.add('active');
             
+            // Actualizar botones desktop
             document.querySelectorAll('#nav-desktop .nav-btn').forEach(btn => {
                 if(btn.dataset.target === tabId) {
                     btn.classList.add('bg-gray-50', 'text-gray-900', 'border-gray-900', 'font-medium');
@@ -326,6 +625,7 @@
                 }
             });
 
+            // Actualizar botones mobile
             document.querySelectorAll('#nav-mobile .nav-btn-mobile').forEach(btn => {
                 if(btn.dataset.target === tabId) {
                     btn.classList.add('bg-gray-900', 'text-white');
@@ -337,7 +637,7 @@
             });
         }
 
-        // --- DECISION TREE LOGIC WITH CONTEXT ---
+        // --- ÁRBOL DE DECISIÓN DIGITAL (INTERACTIVO) ---
         let originState = null;
         let typeState = null;
 
@@ -397,38 +697,31 @@
             return [
                 { 
                     id: 'fase1', 
-                    title: '1. Interés Inicial y Perfilamiento', 
-                    context: isB2B ? "El arquitecto evalúa viabilidad. Necesita saber si podemos suplir su obra." : "El cliente final busca estética y status. Necesita validación visual.",
-                    action: isB2B ? "Enviar catálogos técnicos inmediatamente (Ej: Hansgrohe, Laufen). Preguntar metraje y cronograma de obra." : "Enviar fotos de proyectos reales y lookbooks de Poliform/Nolte. Invitar a vivir la experiencia en el showroom.",
-                    script: isB2B ? "Hola. Para alinearme con tu obra, ¿en qué fase se encuentran y qué volumen manejan? Te adjunto la ficha técnica de la línea." : "¡Hola! Qué gusto. Para asesorarte mejor con el diseño de tu espacio, ¿qué estilo estás buscando? Te comparto un poco de nuestra línea europea."
+                    title: '1. Interés Inicial y Cualificación (Digital)', 
+                    context: isB2B ? "El arquitecto evalúa si marcas/tiempos sirven para su obra." : "El cliente final busca estética y status. Necesita validación visual.",
+                    action: isB2B ? "Enviar ficha técnica (Hansgrohe/Laufen). Preguntar fase de obra." : "Enviar Lookbook. El objetivo es que venga a Sala CEDEX.",
+                    script: isB2B ? "Hola. Para alinearme con tu obra, ¿en qué fase se encuentran y qué volumen manejan? Te adjunto la ficha de la línea solicitada." : "¡Hola! Qué gusto. Para asesorarte mejor con el diseño de tu espacio, ¿qué estilo buscas? Te comparto un poco de nuestra línea europea."
                 },
                 { 
                     id: 'fase2', 
-                    title: '2. Objeción: Precio / Presupuesto', 
-                    context: isB2B ? "En obra, el precio impacta el margen. Hay que justificar el ROI." : "El cliente B2C puede asustarse con el ticket de lujo. Hay que educar sobre la inversión.",
-                    action: isB2B ? "Argumentar retorno de inversión, baja tasa de recambios, garantías institucionales y facilidad de instalación." : "No justificar el precio. Justificar el valor, la longevidad y el diseño. Pivotar a marcas accesibles (Roca Ona) si es imperativo.",
-                    script: isB2B ? "Comprendo el ajuste del presupuesto. Sin embargo, especificar Axor reduce el mantenimiento posventa y eleva la categoría inmobiliaria del proyecto." : "Nolte es una inversión a largo plazo que mantiene su diseño intacto por décadas. Si lo prefieres, podemos explorar colecciones como Roca que optimizan el presupuesto sin perder diseño."
+                    title: '2. Pide Cotización de Proyecto por Chat', 
+                    context: "El cliente quiere un Excel con precios del baño/cocina por WhatsApp. (Riesgo de que nos use solo para comparar).",
+                    action: "Aplicar la Regla de Oro CEDEX. Negar la cotización fría y forzar el agendamiento (Día 3).",
+                    script: "Con todo gusto, pero estas propuestas integrales tienen combinaciones técnicas importantes. Prefiero acompañarte 10 minutos por videollamada para explicarlas y que no compares precios a ciegas. ¿Te sirve el jueves a las 3pm?"
                 },
                 { 
                     id: 'fase3', 
-                    title: '3. Objeción: Tiempos de Importación', 
-                    context: "Marcas como Poliform o Gessi tardan meses en llegar. El cliente tiene urgencia.",
-                    action: isB2B ? "Cruzar fechas con su cronograma de obra blanca. Mostrar que el tiempo calza con el final de la obra." : "Enfocarse en la fabricación 'a medida'. Ofrecer el catálogo de inventario local como contingencia.",
-                    script: isB2B ? "Revisemos tu cronograma. Estas piezas se instalan al final. Si cerramos orden ahora, llegan justo para la fase blanca sin retrasar la entrega." : "Al ser fabricadas sobre pedido en Italia, garantizas una pieza única. Mientras llega, avanzamos con las adecuaciones. O si urge, te envío las opciones premium disponibles en inventario local."
+                    title: '3. Objeción: Tiempos de Importación (Poliform/Nolte)', 
+                    context: "Se da cuenta que las marcas europeas tardan 3-4 meses. Tiene urgencia.",
+                    action: isB2B ? "Cruzar fechas con su cronograma de obra blanca. Mostrar que el tiempo calza." : "Enfocarse en la exclusividad 'a medida'. Ofrecer link de inventario local (p-aonline.com) si desiste.",
+                    script: isB2B ? "Revisemos tu cronograma. Si cerramos ahora, la importación llega justo para la fase de acabados sin retrasar tu entrega." : "Nuestras piezas se fabrican exclusivamente a medida en Europa. Si requieres algo inmediato, te envío el enlace de las líneas premium que tenemos en stock local."
                 },
                 { 
                     id: 'fase4', 
-                    title: '4. Cross-Selling Estratégico', 
-                    context: "El cliente ya aceptó un producto. Es el momento de ampliar el ticket integrando el espacio.",
-                    action: isB2B ? "Si buscan pisos Mirage, sugerir griferías institucionales (Hansgrohe) para unificar proveedores." : "Si compran cocina Nolte o acabados, sugerir mobiliario Poliform para integrar áreas sociales.",
-                    script: isB2B ? "Dado que especificaron Mirage, sugeriría mantener la coherencia técnica integrando las griferías Hansgrohe; así unifican garantías y despachos con nosotros." : "Ya que elegiste la excelencia de Nolte, te sugiero integrar el mobiliario de Poliform para que todo el espacio social hable el mismo idioma de diseño europeo."
-                },
-                { 
-                    id: 'fase5', 
-                    title: '5. Protocolo Anti-Ghosting', 
-                    context: "El cliente dejó de responder por WhatsApp. No ser intrusivo.",
-                    action: "Secuencia de aportes de valor espaciados. Nunca preguntar '¿qué decidiste?'.",
-                    script: "<strong>Día 3:</strong> (Enviar Render) 'Hola, nos acaba de llegar este render de un proyecto reciente similar al tuyo, te lo comparto.'<br><strong>Día 10:</strong> 'Hola, actualizamos el catálogo de Laufen, te dejo el link por si te sirve para la obra.'<br><strong>Día 20:</strong> 'Dejaré tu cotización en el sistema. Quedo atento para apoyarte cuando retomes el proyecto.'"
+                    title: '4. Transición a CEDEX', 
+                    context: "El cliente muestra interés genuino en un proyecto completo.",
+                    action: "Dejar el chat. Agendar la visita al showroom para que experimente los acabados físicamente.",
+                    script: "Ver las texturas en persona cambia toda la perspectiva del proyecto. Me gustaría invitarte a nuestra sala CEDEX para tomarnos un café y revisar los muestrarios. ¿Te queda bien mañana por la mañana?"
                 }
             ];
         }
@@ -451,7 +744,7 @@
                                 <div><strong class="text-gray-900 block mb-1">Contexto Comercial:</strong> ${item.context}</div>
                                 <div><strong class="text-gray-900 block mb-1">Acción Sugerida:</strong> ${item.action}</div>
                                 <div class="bg-gray-900 text-white p-4 rounded mt-4">
-                                    <strong class="block mb-1 text-gray-400 text-xs uppercase tracking-widest">Ejemplo de Respuesta (WhatsApp):</strong>
+                                    <strong class="block mb-1 text-gray-400 text-xs uppercase tracking-widest">Ejemplo de Respuesta (Chat):</strong>
                                     <span class="italic text-gray-200">"${item.script}"</span>
                                 </div>
                             </div>
@@ -463,127 +756,82 @@
             setTimeout(() => toggleAccordion('fase1'), 100);
         }
 
-        // --- AI CHAT SIMULATOR LOGIC ---
+        // --- SIMULADOR IA DIGITAL ---
+        const chatInput = document.getElementById('chatInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const chatBox = document.getElementById('chatBox');
         let chatHistory = [];
-        
-        const systemInstructionText = `
-Actúa como asesor comercial de lujo de "Productos Arquitectónicos" (Colombia).
-Marcas: Poliform, Nolte, Axor, Hansgrohe, Roca, Mirage, Gessi, Laufen.
-REGLAS ESTRICTAS E INQUEBRANTABLES:
-1. Responde SIEMPRE en 1 o máximo 2 oraciones cortas.
-2. Estás en un chat de WhatsApp. Sé ágil, directo, conversacional y elegante.
-3. NUNCA des respuestas largas. NUNCA escribas párrafos grandes. NUNCA uses viñetas ni formatos de lista.
-4. Mantén el tono de lujo. Justifica precios por valor/diseño. Ofrece opciones de entrega local si se quejan de importación.
-5. Cierra siempre con una pregunta natural para guiar al cliente.
-`;
 
-        function resetChat() {
-            chatHistory = [];
-            const cw = document.getElementById('chat-window');
-            cw.innerHTML = `
-                <div class="flex justify-start">
-                    <div class="max-w-[85%] md:max-w-[70%] rounded-2xl rounded-tl-sm p-4 text-sm leading-relaxed bg-white text-gray-800 border border-gray-200 shadow-sm">
-                        ¡Hola! Soy el simulador. Escríbeme objeciones reales de clientes (ej. "Tardan mucho", "Poliform es muy caro", "Quiero un lavamanos") y te mostraré cómo respondería un asesor ideal por WhatsApp.
-                    </div>
-                </div>
-            `;
-        }
+        async function getGeminiResponse(userMessage) {
+            const apiKey = document.getElementById('simKey').value.trim();
+            const inventory = document.getElementById('simInventory').value.trim();
 
-        function appendMessage(role, text) {
-            const cw = document.getElementById('chat-window');
-            const div = document.createElement('div');
-            
-            if(role === 'user') {
-                div.className = "flex justify-end";
-                div.innerHTML = `<div class="max-w-[85%] md:max-w-[70%] rounded-2xl rounded-tr-sm p-4 text-sm leading-relaxed bg-gray-900 text-white shadow-sm">${text}</div>`;
-            } else {
-                div.className = "flex justify-start";
-                div.innerHTML = `<div class="max-w-[85%] md:max-w-[70%] rounded-2xl rounded-tl-sm p-4 text-sm leading-relaxed bg-white text-gray-800 border border-gray-200 shadow-sm">${text}</div>`;
-            }
-            
-            cw.appendChild(div);
-            cw.scrollTop = cw.scrollHeight;
-        }
+            if (!apiKey) return "⚠️ Pega tu API Key de Gemini arriba para activar la inteligencia artificial.";
 
-        function showTypingIndicator() {
-            const cw = document.getElementById('chat-window');
-            const div = document.createElement('div');
-            div.id = "typing-indicator";
-            div.className = "flex justify-start";
-            div.innerHTML = `
-                <div class="rounded-2xl rounded-tl-sm px-5 py-4 bg-white border border-gray-200 typing-indicator flex items-center h-12 shadow-sm">
-                    <span></span><span></span><span></span>
-                </div>`;
-            cw.appendChild(div);
-            cw.scrollTop = cw.scrollHeight;
-        }
-
-        function removeTypingIndicator() {
-            const el = document.getElementById('typing-indicator');
-            if(el) el.remove();
-        }
-
-        async function handleChatSubmit(e) {
-            e.preventDefault();
-            const input = document.getElementById('chat-input');
-            const btn = document.getElementById('chat-submit');
-            
-            const customApiKey = document.getElementById('api-key-input').value.trim();
-            const apiKey = customApiKey || ""; 
-            
-            const text = input.value.trim();
-            if(!text) return;
-            
-            input.value = '';
-            input.disabled = true;
-            btn.disabled = true;
-            
-            appendMessage('user', text);
-            chatHistory.push({ role: 'user', parts: [{ text: text }] });
-            
-            showTypingIndicator();
+            const prompt = `Eres el "Filtro Digital" (WhatsApp) de Productos Arquitectónicos.
+            Tu misión es aplicar las reglas CEDEX en el primer contacto:
+            1. Respuestas de 1 a 2 oraciones máximo.
+            2. Si pide un PROYECTO (baño completo, cocina, varios productos): NUNCA des precio. Usa el guión para agendar: "Prefiero prepararte la propuesta completa, ¿te agendo videollamada para el jueves?".
+            3. Si pide una pieza individual de este inventario [${inventory}]: ofrécela de inmediato y envía el link de compra.
+            4. Si pide algo europeo fuera de stock (Nolte, Poliform): explica elegantemente que toma 3 meses de importación a medida.
+            Cliente: ${userMessage}`;
 
             try {
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
-                
-                const payload = {
-                    contents: chatHistory,
-                    systemInstruction: { parts: [{ text: systemInstructionText }] }
-                };
-
-                const response = await fetch(apiUrl, {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: prompt }] }],
+                        generationConfig: { temperature: 0.3, maxOutputTokens: 100 }
+                    })
                 });
 
-                removeTypingIndicator();
-
-                if (!response.ok) {
-                    throw new Error("Error en API");
-                }
-
+                if (!response.ok) return `❌ Error de API. Revisa tu clave.`;
                 const data = await response.json();
-                const aiText = data.candidates?.[0]?.content?.parts?.[0]?.text;
-                
-                if (aiText) {
-                    chatHistory.push({ role: 'model', parts: [{ text: aiText }] });
-                    appendMessage('model', aiText);
-                } else {
-                    appendMessage('model', "Hubo un error al generar la respuesta.");
-                }
-
+                return data.candidates[0].content.parts[0].text;
             } catch (error) {
-                removeTypingIndicator();
-                console.error(error);
-                appendMessage('model', "⚠️ Error. Si exportaste este archivo fuera de Canvas, asegúrate de colocar tu API Key de Gemini en el recuadro superior.");
-                chatHistory.pop();
-            } finally {
-                input.disabled = false;
-                btn.disabled = false;
-                input.focus();
+                return `❌ Error de red o conexión. Verifica tu conexión.`;
             }
         }
+
+        function appendMessage(sender, text) {
+            if(!chatBox) return;
+            const div = document.createElement('div');
+            div.className = `p-3 rounded-2xl max-w-[80%] text-sm shadow-sm flex ${sender === 'user' ? 'bg-gray-900 text-white rounded-tr-sm' : 'bg-gray-100 text-gray-900 border border-gray-200 rounded-tl-sm'}`;
+            div.textContent = text;
+            
+            const wrapper = document.createElement('div');
+            wrapper.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
+            wrapper.appendChild(div);
+
+            chatBox.appendChild(wrapper);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        async function handleSend() {
+            const text = chatInput.value.trim();
+            if (!text) return;
+
+            appendMessage('user', text);
+            chatInput.value = '';
+            
+            const typingWrapper = document.createElement('div');
+            typingWrapper.className = 'flex justify-start';
+            typingWrapper.id = 'typingIndicator';
+            typingWrapper.innerHTML = `<div class="p-3 rounded-2xl bg-gray-100 border border-gray-200 rounded-tl-sm chat-typing"><span></span><span></span><span></span></div>`;
+            chatBox.appendChild(typingWrapper);
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            const aiResponse = await getGeminiResponse(text);
+            
+            const indicator = document.getElementById('typingIndicator');
+            if(indicator) indicator.remove();
+            
+            appendMessage('ai', aiResponse);
+        }
+
+        if(sendBtn) sendBtn.addEventListener('click', handleSend);
+        if(chatInput) chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSend(); });
     </script>
 </body>
 </html>
